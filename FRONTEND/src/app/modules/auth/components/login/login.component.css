@@ -1,0 +1,62 @@
+.container{
+    background-color: #D9D9D9;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+ 
+    
+}
+.login{
+    background-color: white;
+    height: 50vh;
+    width: 20vw;
+    border-radius: 20px;
+}
+h3{
+    text-align: center;
+    font-weight: 600px;
+}
+.logo-a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8vw;
+    width: 50px;
+    height: 50px;
+    background: #000;
+    color: white;
+    border-radius: 5px;
+}
+.form-control{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 8px;
+    margin-top: 10px;
+}
+
+
+
+.form-control input{
+    border-radius: 7px;
+    padding: 8px;
+    
+}
+
+button{
+    border: none;
+    border-radius: 15px;
+    color: white;
+    width: 250px;
+  
+    height: 36px;
+    margin-left: 8px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #1798fb 0%, #2D5CFE 100%);
+    
+}
+
+

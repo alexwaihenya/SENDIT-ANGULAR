@@ -1,0 +1,34 @@
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+    /* background-color: #2D5CFE; */
+    
+}
+.links a{
+    text-decoration: none;
+    margin: 10px 20px;
+    color: black;
+}
+
+
+button{
+    border: none;
+    border-radius: 15px;
+    color: white;
+    width: 100px;
+    margin: 4px;
+    height: 36px;
+    background: linear-gradient(135deg, #1798fb 0%, #2D5CFE 100%);
+}
+.btn-login{
+    border: none;
+    border-radius: 15px;
+    color: white;
+    width: 100px;
+    margin: 4px;
+    height: 36px;
+    /* background: linear-gradient(135deg, #1798fb 0%, #2D5CFE 100%); */
+    background: black;
+}
