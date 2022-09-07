@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,14 @@ import { NgClass } from '@angular/common';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
   }
 
   onLogIn(){
+
+    // this.route.navigate(['/admin/all-orders'])
 
   }
 

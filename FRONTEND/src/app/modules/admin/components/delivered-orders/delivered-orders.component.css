@@ -1,0 +1,46 @@
+.container{
+    background-color:#452ED4 ;
+    height: 80.5vh;
+    position: absolute;
+    width: 75vw;
+  
+}
+.parcel-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.parcel-details{
+    margin-top: 16px;
+    border-radius: 8px;
+    width: 300px;
+    height: 250px;
+    background: #fff;
+    margin-left: 32px;
+  
+    
+    
+}
+.location{
+    display: flex;
+    gap: 16px;
+}
+.view{
+    display: flex;
+    gap: 36px;
+}
+.btn-view{
+    border: none;
+    border-radius: 15px;
+    color: white;
+    width: 250px;
+    height: 36px;
+    margin-left: 24px;
+    margin-right: 4px;
+    margin-top: 24px;
+    background: linear-gradient(135deg, #1798fb 0%, #2D5CFE 100%);
+}
+p{
+    margin-left: 8px;
+}

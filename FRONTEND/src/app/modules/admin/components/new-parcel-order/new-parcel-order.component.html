@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="parcelform">
+    <h3>CREATE PARCEL ORDER</h3>
+
+    <form [formGroup]="parcelform" (ngSubmit)="onCreate()">
+      <div class="form-control">
+        <label for="sender">SENDER</label>
+        <input type="email" required formControlName="senderemail" />
+      </div>
+      <div class="form-control">
+        <label for="sender">RECEIVER</label>
+        <input type="email" required formControlName="receiveremail" />
+      </div>
+      <div class="form-control">
+        <label for="parcel_desc">PARCEL DESCRIPTION</label>
+        <input type="text" required formControlName="parcel_desc" />
+      </div>
+      <div class="form-control">
+        <label for="address">ADDRESS</label>
+        <input type="text" required formControlName="address" />
+      </div>
+      <div class="form-control">
+        <label for="receiveremail">RECEIVER EMAIL</label>
+        <input type="email" required formControlName="receiveremail" />
+      </div>
+      <div class="form-control">
+        <label for="dispatch_date">DISPATCH DATE</label>
+        <input type="date" required formControlName="dispatch_date" />
+      </div>
+      <div class="form-control">
+        <label for="delivery_date">DELIVERY DATE</label>
+        <input type="date" required formControlName="delivery_date" />
+      </div>
+      <div class="form-control">
+        <label for="weight">WEIGHT</label>
+        <input type="number" required formControlName="delivery_date" min="0" />
+      </div>
+      <div class="form-control">
+        <label for="price">PRICE</label>
+        <input type="number" required formControlName="delivery_date" min="0" />
+      </div>
+
+      <button type="submit">CREATE ORDER</button>
+    </form>
+  </div>
+</div>
