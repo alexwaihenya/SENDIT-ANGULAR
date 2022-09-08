@@ -1,0 +1,27 @@
+
+### registeruser
+POST http://localhost:5000/users/register
+Content-Type: application/json
+
+{
+    "username":"viola",
+    "email": "abc@gmail.com",
+    "password": "12345678"
+}
+
+###loginUser
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+    
+    "email":"lxwaihenya@gmail.com",
+    "password":"12345678"  
+}
+###
+GET http://localhost:5000/users/check
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAxMSwidXNlcm5hbWUiOiJ2aW9sYSIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYyNTgwMzE5LCJleHAiOjE2NjI1ODIzMTl9.FOLDc15k9hVy_1CbplG4kY7Zrday9K2qWExNpagO5Vg
+###
+
+GET http://localhost:5000/users/homepage
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAxMSwidXNlcm5hbWUiOiJ2aW9sYSIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYyNTgwMzE5LCJleHAiOjE2NjI1ODIzMTl9.FOLDc15k9hVy_1CbplG4kY7Zrday9K2qWExNpagO5Vg

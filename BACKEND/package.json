@@ -26,5 +26,8 @@
     "jsonwebtoken": "^8.5.1",
     "mssql": "^9.0.1",
     "nodemon": "^2.0.19"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.9"
   }
 }

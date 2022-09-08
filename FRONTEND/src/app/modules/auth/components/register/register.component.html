@@ -7,7 +7,7 @@
       <p>You need an account to continue</p>
     </div>
 
-    <form [formGroup]="registerform" (ngSubmit)="onRegister()">
+    <form [formGroup]="form" (ngSubmit)="onRegister()">
       <div class="form-control">
         <label for="username">USERNAME</label>
         <input type="text" required formControlName="username" />
@@ -21,7 +21,7 @@
         <input type="password" required formControlName="password" />
       </div>
 
-      <button type="submit">SIGN UP</button>
+      <button type="submit"  [disabled]="!form.valid">SIGN UP</button>
     </form>
   </div>
 </div>
