@@ -1,0 +1,26 @@
+<!-- <div class="my-google-map"> -->
+
+<!-- <google-map [width]="null" [height]="null" [options]="mapOptions"></google-map> -->
+<!-- <google-map [options]="mapOptions">
+       <map-marker [position]="marker.position"></map-marker>
+    </google-map> -->
+<!-- </div> -->
+
+<div>
+  <google-map
+    width="50vw"
+    height="50vh"
+    [center]="center"
+    [zoom]="zoom"
+    (mapClick)="addMarker($event)"
+  >
+    <map-marker
+      #marker="mapMarker"
+      *ngFor="let markerPosition of markerPositions"
+      [position]="markerPosition"
+      [options]="markerOptions"
+      (mapClick)="openInfoWindow(marker)"
+    ></map-marker>
+    <map-info-window color="#000">Info Window content</map-info-window>
+  </google-map>
+</div>

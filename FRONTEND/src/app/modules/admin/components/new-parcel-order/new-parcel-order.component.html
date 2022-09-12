@@ -4,12 +4,25 @@
 
     <form [formGroup]="parcelform" (ngSubmit)="onCreate()">
       <div class="form-control">
-        <label for="sender">SENDER</label>
-        <input type="email" required formControlName="senderemail" />
+        <label for="sender">SENDER EMAIL</label>
+        <select formControlName="senderemail">
+          <option value="kk@gmail.com">kk@gmail.com</option>
+          <option value="dk@gmail.com">dk@gmail.com</option>
+          <option value="lx@gmail.com">lx@gmail.com</option>
+        </select>
+   
+        <!-- <input type="email" required formControlName="senderemail" /> -->
       </div>
       <div class="form-control">
-        <label for="sender">RECEIVER</label>
-        <input type="email" required formControlName="receiveremail" />
+        <label for="receiver">RECEIVER</label>
+
+        <select formControlName="receiveremail">
+          <option value="kk@gmail.com">kk@gmail.com</option>
+          <option value="dk@gmail.com">dk@gmail.com</option>
+          <option value="lx@gmail.com">lx@gmail.com</option>
+        </select>
+
+        <!-- <input type="email" required formControlName="receiveremail" /> -->
       </div>
       <div class="form-control">
         <label for="parcel_desc">PARCEL DESCRIPTION</label>
@@ -21,7 +34,12 @@
       </div>
       <div class="form-control">
         <label for="receiveremail">RECEIVER EMAIL</label>
-        <input type="email" required formControlName="receiveremail" />
+        <select formControlName="receiveremail1">
+          <option value="kk@gmail.com">kk@gmail.com</option>
+          <option value="dk@gmail.com">dk@gmail.com</option>
+          <option value="lx@gmail.com">lx@gmail.com</option>
+        </select>
+        <!-- <input type="email" required formControlName="receiveremail1" /> -->
       </div>
       <div class="form-control">
         <label for="dispatch_date">DISPATCH DATE</label>
@@ -33,14 +51,14 @@
       </div>
       <div class="form-control">
         <label for="weight">WEIGHT</label>
-        <input type="number" required formControlName="delivery_date" min="0" />
+        <input type="number" required formControlName="weight" min="0" />
       </div>
       <div class="form-control">
         <label for="price">PRICE</label>
-        <input type="number" required formControlName="delivery_date" min="0" />
+        <input type="number" required formControlName="price" min="0" />
       </div>
 
-      <button type="submit">CREATE ORDER</button>
+      <button [disabled]="!parcelform.valid" type="submit">CREATE ORDER</button>
     </form>
   </div>
 </div>

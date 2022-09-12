@@ -58,5 +58,16 @@ button{
     background: linear-gradient(135deg, #1798fb 0%, #2D5CFE 100%);
     
 }
+input.ng-invalid.ng-touched,textarea.ng-invalid.ng-touched,select.ng-invalid.ng-touched{
+    border-left: 5px solid red;
+
+}
+input.ng-valid.ng-touched,textarea.ng-valid.ng-touched,select.ng-valid.ng-touched{
+    border-left: 5px solid green;
+
+}
+.error{
+    color: red;
+}
 
 

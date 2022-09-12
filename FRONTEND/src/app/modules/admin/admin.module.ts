@@ -10,6 +10,10 @@ import { NewParcelOrderComponent } from './components/new-parcel-order/new-parce
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClientsComponent } from './components/clients/clients.component';
 import { ViewDetailsComponent } from './components/view-details/view-details.component';
+import { StoreModule } from '@ngrx/store';
+import { OrderReducer } from 'src/app/Redux/Reducers/OrdersReducers';
+import { EffectsModule } from '@ngrx/effects';
+import { OrderEffectsService } from 'src/app/Redux/Effects/OrdersEffects';
 
 
 @NgModule({
@@ -25,7 +29,9 @@ import { ViewDetailsComponent } from './components/view-details/view-details.com
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forFeature('order',OrderReducer),
+    EffectsModule.forFeature([OrderEffectsService]),
   ]
 })
 export class AdminModule { }

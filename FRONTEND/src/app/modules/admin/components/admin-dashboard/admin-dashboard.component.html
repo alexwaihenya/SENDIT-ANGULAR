@@ -1,26 +1,28 @@
 <div class="container">
   <div class="admin-container">
+    
     <div class="admin-dashboard">
+      <!-- <span><p>{{today | date:'medium'}}</p></span> -->
       <div class="admin-profile">Welcome Admin</div>
 
       <div class="admin-controls">
         <h4>DASHBOARD</h4>
         <div>
-          <a routerLink="/admin/all-orders">ALL ORDERS</a>
+          <button routerLink="/admin/all-orders">ALL ORDERS</button>
         </div>
         <div>
-          <a routerLink="/admin/dispatched-orders">DISPATCH</a>
+          <button routerLink="/admin/dispatched-orders">DISPATCH</button>
         </div>
         <div>
-          <a routerLink="/admin/delivered-orders">DELIVERED</a>
+          <button routerLink="/admin/delivered-orders">DELIVERED</button>
         </div>
         <div>
-          <a routerLink="/admin/clients">CUSTOMERS</a>
+          <button routerLink="/admin/clients">CUSTOMERS</button>
         </div>
       </div>
 
       <div class="admin-controls">
-        <a routerLink="/admin/new-parcel-order">CREATE ORDER</a>
+        <button routerLink="/admin/new-parcel-order">CREATE ORDER</button>
       </div>
     </div>
 

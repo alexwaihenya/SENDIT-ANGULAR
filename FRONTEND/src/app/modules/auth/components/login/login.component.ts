@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgClass } from '@angular/common';
+import {Store} from '@ngrx/store'
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/intefaces/user';
+import { ApiUserService } from '../../services/api.user.service';
+import { Irole } from 'src/app/intefaces/Irole';
 
 @Component({
   selector: 'app-login',
@@ -10,36 +12,51 @@ import { IUser } from 'src/app/intefaces/user';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor(private apiService:ApiUserService,private router: Router,private store:Store<any>) { }
+
+  errorMessage!:string
+  error=false
+
+
 
   ngOnInit(): void {
+    // this.store.select('login').subscribe(state=>{
+    //   this.LogIn = state
+    // })
   }
 
-  LogIn(data: IUser) {
+  role!:Irole
 
-    this.apiService.loginUser(data).subscribe(res => {
-      localStorage.setItem("token", res.token)
+  LogIn(data: IUser) {
+    console.log(data);
+    // this.store.dispatch({type:'LOGIN_USER'})
+    
+    
+
+    this.apiService.login(data.email,data.password).subscribe(res => {
+    localStorage.setItem("token",res.token)
       this.checkRole()
     })
     setTimeout(() => {
 
       this.redirect()
-    }, 500);
+    }, 1000);
 
     // this.route.navigate(['/admin/all-orders'])
   }
   checkRole() {
-    this.apiService.checkUserRole().subscribe(res => {
+    this.apiService.checkUser().subscribe(res => {
       console.log(res)
 
     })
   }
+ 
 
   redirect() {
     let role = localStorage.getItem('role')
     if (role == 'user') {
 
-      this.router.navigate(['/home/user/user-dashboard']);
+      this.router.navigate(['/user/user-dashboard']);
 
       localStorage.setItem('isLoggedIn', 'true')
 

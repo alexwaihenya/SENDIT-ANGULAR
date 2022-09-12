@@ -9,6 +9,8 @@ export class AdminDashboardComponent implements OnInit {
 
   constructor() { }
 
+  today = Date.now()
+
   ngOnInit(): void {
   }
 

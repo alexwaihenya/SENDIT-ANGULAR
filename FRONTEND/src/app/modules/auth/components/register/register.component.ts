@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import { Router } from '@angular/router';
+import { ApiUserService } from '../../services/api.user.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,7 +11,7 @@ export class RegisterComponent implements OnInit {
 
   form!:FormGroup
 
-  constructor(private fb:FormBuilder,private router:Router) { }
+  constructor(private fb:FormBuilder,private apiService:ApiUserService,private router:Router) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -21,6 +22,7 @@ export class RegisterComponent implements OnInit {
 
     })
   }
+  filled=false
 
   onRegister(){
     console.log(this.form.value);
@@ -28,11 +30,11 @@ export class RegisterComponent implements OnInit {
     let object ={
       form: this.form.value
     }
-    // this.apiService.registerUser(object.form).subscribe(res=>{
-    //   console.log(res);
-    //   this.router.navigate(['auth/login'])
+    this.apiService.registerUser(object.form).subscribe(res=>{
+      console.log(res);
+      this.router.navigate(['auth/login'])
       
-    // })
+    })
     
 
   }

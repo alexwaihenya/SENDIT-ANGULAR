@@ -1,4 +1,30 @@
 <div class="container">
+  <div class="search">
+    <input
+      type="text"
+      placeholder="search item..."
+    />
+  </div>
+
+ 
+  <div class="content" *ngIf="order$ | async as orders">
+    <div class="text" *ngFor="let orders of  orders">
+      <p>{{ order.senderemail }}</p>
+      <p>{{ order.receiveremail }}</p>
+      <p>{{ order.parcel_desc }}</p>
+      <p>{{ order.address }}</p>
+      <p>{{ order.receiveremail1 }}</p>
+      <p>{{ order.dispatch_date }}</p>
+      <p>{{ order.delivery_date }}</p>
+      <p>{{ order.weight }}</p>
+      <p>{{ order.price }}</p>
+    <!-- </div> -->
+    <div class="image">
+      <!-- <app-google-maps></app-google-maps> -->
+    </div>
+  </div>
+
+
   <div class="parcel-container">
     <div class="parcel-details">
       <div class="location">
