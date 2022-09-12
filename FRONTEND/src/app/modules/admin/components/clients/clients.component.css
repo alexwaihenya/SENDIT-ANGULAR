@@ -1,26 +1,4 @@
-/* #customers {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  #customers td, #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #customers tr:hover {background-color: #ddd;}
-  
-  #customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #04AA6D;
-    color: white;
-  } */
-  .container{
+ .container{
     background-color:#D9D9D9 ;
     height: 80.5vh;
     position: absolute;
@@ -39,4 +17,4 @@
     border-bottom: 1px solid #ddd;
   }
   
-  tr:hover {background-color:#2723EE;}
+  tr:hover {background-color:white}

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { IOrder } from 'src/app/intefaces';
-import { getOrder, OrderState } from 'src/app/Redux/Reducers/OrdersReducers';
+import { getOrder, getOrders, OrderState } from 'src/app/Redux/Reducers/OrdersReducers';
 import * as Actions from '../../../../Redux/Actions/OrdersActions'
 @Component({
   selector: 'app-all-orders',
@@ -11,27 +10,34 @@ import * as Actions from '../../../../Redux/Actions/OrdersActions'
 })
 export class AllOrdersComponent implements OnInit {
 
-  id!:number
+  filteredString:string = ''
 
-  order$=this.store.select(getOrder)
-    
-  
-  
+  id!: number
 
-  constructor(private route:ActivatedRoute,private store:Store<OrderState>) { }
+  orders$ = this.store.select(getOrders)
+
+
+
+
+
+
+  constructor(private route: ActivatedRoute, private store: Store<OrderState>) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((param)=>{
-      this.id=+param['id']
+
+
+
+    this.route.params.subscribe((param) => {
+      this.id = +param['id']
     })
-  this.store.dispatch(Actions.SelectedId({id:this.id}))
-  this.getAll()
+    this.store.dispatch(Actions.SelectedId({ id: this.id }))
+    this.getAll()
 
   }
-  
-  getAll(){
+
+  getAll() {
     this.store.dispatch(Actions.LoadOrders())
-    
+
   }
 
 }

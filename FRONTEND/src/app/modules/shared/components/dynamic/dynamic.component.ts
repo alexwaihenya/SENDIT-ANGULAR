@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dynamic',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DynamicComponent implements OnInit {
 
+  @Input() message!: string
+
+  @Output() end = new EventEmitter<void>()
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  close() {
+
+    this.end.emit()
   }
 
 }

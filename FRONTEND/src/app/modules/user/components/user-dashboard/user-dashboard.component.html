@@ -6,10 +6,10 @@
         <div class="admin-controls">
           <h4>DASHBOARD</h4>
           <div>
-            <a routerLink="">INCOMING ORDERS</a>
+            <a routerLink="/user/user-dashboard/incoming">INCOMING ORDERS</a>
           </div>
           <div>
-            <a routerLink="">OUTGOING ORDERS</a>
+            <a routerLink="/user/user-dashboard/outgoing">OUTGOING ORDERS</a>
           </div>
           
         </div>
@@ -17,13 +17,15 @@
         
      
   
-      <div>
-        <router-outlet></router-outlet>
-  
-        <!-- <div class="search-container">
-                  <span>Search:</span>
-                  <input type="search">
-              </div> -->
-      </div>
+   
+    </div>
+
+    <div>
+      <router-outlet></router-outlet>
+
+      <!-- <div class="search-container">
+                <span>Search:</span>
+                <input type="search">
+            </div> -->
     </div>
   </div>

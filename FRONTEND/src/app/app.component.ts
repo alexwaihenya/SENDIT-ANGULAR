@@ -1,5 +1,4 @@
-import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
-import { DynamicComponent } from './dynamic/dynamic.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +8,7 @@ import { DynamicComponent } from './dynamic/dynamic.component';
 export class AppComponent {
   title = 'FRONTEND';
 
-  @ViewChild('container', { read: ViewContainerRef })  
-  container!: ViewContainerRef;  
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }  
-  add(): void {  
-    // create the component factory  
-    const dynamicComponentFactory = this.componentFactoryResolver.resolveComponentFactory(DynamicComponent);  
-    // add the component to the view  
-    const componentRef = this.container.createComponent(dynamicComponentFactory);  
-  }  
+   
 
 
 }

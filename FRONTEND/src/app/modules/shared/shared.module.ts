@@ -1,23 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DynamicComponent } from './components/dynamic/dynamic.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
-import { GoogleMapsModule } from '@angular/google-maps'
+import { SearchPipe } from './custom-pipes/search.pipe';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
+    DynamicComponent,
     NavbarComponent,
-    GoogleMapsComponent
+    SearchPipe
   ],
   imports: [
     CommonModule,
-    GoogleMapsModule
+    RouterModule
   ],
   exports:[
+    DynamicComponent,
     NavbarComponent,
-    GoogleMapsComponent
+    SearchPipe
   ]
 })
 export class SharedModule { }

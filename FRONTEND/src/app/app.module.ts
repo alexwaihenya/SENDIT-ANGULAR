@@ -11,9 +11,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { SharedModule } from './shared/shared.module';
-import { DynamicComponent } from './dynamic/dynamic.component';
-// import { SearchPipe } from './pipes/search.pipe';
+import { SharedModule } from './modules/shared/shared.module';
+
+
 
 @NgModule({
   declarations: [
@@ -21,17 +21,19 @@ import { DynamicComponent } from './dynamic/dynamic.component';
     HomepageComponent,
     HeaderComponent,
     PageNotFoundComponent,
-    DynamicComponent,
-    // SearchPipe
+  
+  
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({name:'Order',maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({name:'Order',maxAge: 25, logOnly: environment.production }),
+    SharedModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

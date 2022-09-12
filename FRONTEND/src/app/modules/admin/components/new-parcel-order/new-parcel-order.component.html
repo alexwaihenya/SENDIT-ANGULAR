@@ -4,42 +4,33 @@
 
     <form [formGroup]="parcelform" (ngSubmit)="onCreate()">
       <div class="form-control">
-        <label for="sender">SENDER EMAIL</label>
-        <select formControlName="senderemail">
-          <option value="kk@gmail.com">kk@gmail.com</option>
-          <option value="dk@gmail.com">dk@gmail.com</option>
-          <option value="lx@gmail.com">lx@gmail.com</option>
-        </select>
-   
-        <!-- <input type="email" required formControlName="senderemail" /> -->
+        <label for="sender">SENDER NAME</label>
+        <input type="text" required formControlName="sender"  />
       </div>
       <div class="form-control">
         <label for="receiver">RECEIVER</label>
-
+        <input type="text" required formControlName="receiver"/>
+      </div>
+      <div class="form-control">
+        <label for="parcel_desc">PARCEL DESCRIPTION</label>
+        <input type="text" required formControlName="parcel_desc" />
+        
+      </div>
+      <div class="form-control">
+        <label for="from">FROM</label>
+        <input type="text" required formControlName="from" />
+      </div>
+      <div class="form-control">
+        <label for="to">TO</label>
+        <input type="text" required formControlName="to" />
+      </div>
+      <div class="form-control">
+        <label for="receiveremail">RECEIVER EMAIL</label>
         <select formControlName="receiveremail">
           <option value="kk@gmail.com">kk@gmail.com</option>
           <option value="dk@gmail.com">dk@gmail.com</option>
           <option value="lx@gmail.com">lx@gmail.com</option>
         </select>
-
-        <!-- <input type="email" required formControlName="receiveremail" /> -->
-      </div>
-      <div class="form-control">
-        <label for="parcel_desc">PARCEL DESCRIPTION</label>
-        <input type="text" required formControlName="parcel_desc" />
-      </div>
-      <div class="form-control">
-        <label for="address">ADDRESS</label>
-        <input type="text" required formControlName="address" />
-      </div>
-      <div class="form-control">
-        <label for="receiveremail">RECEIVER EMAIL</label>
-        <select formControlName="receiveremail1">
-          <option value="kk@gmail.com">kk@gmail.com</option>
-          <option value="dk@gmail.com">dk@gmail.com</option>
-          <option value="lx@gmail.com">lx@gmail.com</option>
-        </select>
-        <!-- <input type="email" required formControlName="receiveremail1" /> -->
       </div>
       <div class="form-control">
         <label for="dispatch_date">DISPATCH DATE</label>
@@ -50,12 +41,20 @@
         <input type="date" required formControlName="delivery_date" />
       </div>
       <div class="form-control">
+        <label for="status">STATUS</label>
+        <select formControlName="status">
+          <option value="dispatched">Dispatched</option>
+          <option value="delivered">Delivered</option>
+        </select>
+        
+      </div>
+      <div class="form-control">
         <label for="weight">WEIGHT</label>
-        <input type="number" required formControlName="weight" min="0" />
+        <input type="number" required formControlName="weight" min=0 />
       </div>
       <div class="form-control">
         <label for="price">PRICE</label>
-        <input type="number" required formControlName="price" min="0" />
+        <input type="number" required formControlName="price" min=0 />
       </div>
 
       <button [disabled]="!parcelform.valid" type="submit">CREATE ORDER</button>

@@ -1,9 +1,9 @@
 
-<div class="container">
-  <div class="login">
+<div class="container" >
+  <div class="login" >
     <h3>WELCOME</h3>
     <div class="logo-a">A</div>
-    <p *ngIf="error">{{errorMessage}}</p>
+    <p *ngIf="error">{{error}}</p>
 
     <form #form="ngForm" (ngSubmit)="LogIn(form.value)">
       <div class="form-control">

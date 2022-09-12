@@ -15,11 +15,13 @@ export class LoginComponent implements OnInit {
   constructor(private apiService:ApiUserService,private router: Router,private store:Store<any>) { }
 
   errorMessage!:string
-  error=false
+  error=''
 
 
 
   ngOnInit(): void {
+
+    
     // this.store.select('login').subscribe(state=>{
     //   this.LogIn = state
     // })

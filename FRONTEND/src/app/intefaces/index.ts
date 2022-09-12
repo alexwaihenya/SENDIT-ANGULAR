@@ -16,27 +16,17 @@ export interface UpdateResponse{
     message:string
 }
 
-// export interface IOrder{
-//     id?:number,
-//     senderName:string
-//     receiverName:string
-//     senderEmail:string
-//     receiverEmail:string
-//     origin:string
-//     destination:string
-//     dispatchedDate:string
-//     deliveryDate:string
-//     weight:number
-//     price:number
-// }
+
 
 export interface IOrder{
     id?:number, 
-    senderemail:string
-    receiveremail:string
+    sender:string
+    receiver:string
     parcel_desc:string
-    address:string
-    receiveremail1:string
+    from:string
+    to:string
+    status:string
+    receiveremail:string
     dispatch_date:string
     delivery_date:string
     weight:number

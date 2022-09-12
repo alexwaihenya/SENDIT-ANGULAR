@@ -13,10 +13,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   onLogout(){
     localStorage.clear()
-    this.router.navigate([''])
+    this.router.navigate(['/'])
+    
   }
+
 
 }
