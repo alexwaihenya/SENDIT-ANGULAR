@@ -18,13 +18,13 @@ export interface UpdateResponse{
 
 
 
-export interface IOrder{
+export interface IParcel{
     id?:number, 
     sender:string
     receiver:string
     parcel_desc:string
-    from:string
-    to:string
+    from:Location
+    to:Location
     status:string
     receiveremail:string
     dispatch_date:string
@@ -32,3 +32,9 @@ export interface IOrder{
     weight:number
     price:number
 }
+
+export interface Location {
+    address: string;
+    latitute?: number;
+    longitude?: number;
+  }

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { IOrder } from 'src/app/intefaces';
+import { IParcel } from 'src/app/intefaces';
 import { Irole } from 'src/app/intefaces/Irole';
 import { IUser } from 'src/app/intefaces/user';
 
@@ -10,21 +10,21 @@ import { IUser } from 'src/app/intefaces/user';
 })
 export class ApiUserService {
   baseUrl: string = "http://localhost:3000"
-  orders$!:Observable<IOrder[]>
+  orders$!:Observable<IParcel[]>
 
   constructor(private http:HttpClient) { }
 
-  getOrders() : Observable <IOrder[]>{
-    return this.http.get<IOrder[]>(`${this.baseUrl}/orders`)
+  getParcels() : Observable <IParcel[]>{
+    return this.http.get<IParcel[]>(`${this.baseUrl}/orders`)
   }
-  getOrderDetails(id:number): Observable<IOrder[]>{
-    return this.http.get<IOrder[]>(`${this.baseUrl}/orders/${id}`)
+  getParcelDetails(id:number): Observable<IParcel[]>{
+    return this.http.get<IParcel[]>(`${this.baseUrl}/orders/${id}`)
   }
   
-  deleteOrder(id:number): Observable <{message:string}>{
+  deleteParcel(id:number): Observable <{message:string}>{
     return this.http.delete<{message:string}>(`${this.baseUrl}/orders/${id}`)
   }
-  createOrder(order:IOrder):Observable<{message:string}>{
+  createParcel(order:IParcel):Observable<{message:string}>{
     return this.http.post<{message:string}>(`${this.baseUrl}/orders`, order)
   }
 

@@ -10,13 +10,10 @@ import * as Actions from '../../../../Redux/Actions/OrdersActions'
 })
 export class AllOrdersComponent implements OnInit {
 
-  filteredString:string = ''
+  filter:string = ''
+  p: number = 1
 
   id!: number
-
-  orders$ = this.store.select(getOrders)
-
-
 
 
 
@@ -34,10 +31,37 @@ export class AllOrdersComponent implements OnInit {
     this.getAll()
 
   }
+  orders$ = this.store.select(getOrders)
 
   getAll() {
     this.store.dispatch(Actions.LoadOrders())
 
   }
+  display: any;
+  center: google.maps.LatLngLiteral = {
+    lat: -0.42013,
+    lng: 36.94759,
+  };
+  zoom = 4;
+  moveMap(event: google.maps.MapMouseEvent) {
+    if (event.latLng != null) this.center = event.latLng.toJSON();
+  }
+  move(event: google.maps.MapMouseEvent) {
+    if (event.latLng != null) this.display = event.latLng.toJSON();
+  }
+  markerOptions: google.maps.MarkerOptions = {
+    draggable: false,
+  };
+  markerPositions: google.maps.LatLngLiteral[] = [
+    {
+      lat: -0.42013,
+      lng: 36.94759,
+    },
+    {
+      lat: 1.292066,
+      lng: 36.821946,
+    },
+  ];
+  
 
 }

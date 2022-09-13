@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { SharedModule } from './modules/shared/shared.module';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 
@@ -20,7 +21,8 @@ import { SharedModule } from './modules/shared/shared.module';
     AppComponent,
     HomepageComponent,
     HeaderComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
+   
   
   
   
@@ -32,7 +34,12 @@ import { SharedModule } from './modules/shared/shared.module';
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({name:'Order',maxAge: 25, logOnly: environment.production }),
-    SharedModule
+    SharedModule,
+    GoogleMapsModule
+
+
+  ],
+  exports:[
 
   ],
   providers: [],

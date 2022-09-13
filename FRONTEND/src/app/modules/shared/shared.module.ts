@@ -4,6 +4,7 @@ import { DynamicComponent } from './components/dynamic/dynamic.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchPipe } from './custom-pipes/search.pipe';
 import { RouterModule } from '@angular/router';
+import { GoogleMapComponent } from './components/google-map/google-map.component';
 
 
 
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     DynamicComponent,
     NavbarComponent,
-    SearchPipe
+    SearchPipe,
+    GoogleMapComponent
   ],
   imports: [
     CommonModule,

@@ -1,11 +1,11 @@
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
-import { IOrder } from "src/app/intefaces";
+import { IParcel } from "src/app/intefaces";
 import * as Actions from '../Actions/OrdersActions';
 
 
 
 export interface OrderState {
-    orders: IOrder[];
+    orders: IParcel[];
     ordersError: string;
     error: string;
     deleteMessage: string;

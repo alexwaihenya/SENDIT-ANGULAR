@@ -1,33 +1,40 @@
 <div class="container">
   <div class="search">
-    <input type="text" placeholder="search item..." />
+    <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+    <input type="text" placeholder="search..." [(ngModel)]="filter" />
   </div>
 
   <div>
     <div *ngIf="orders$ | async as orders">
-      <table>
-        <tr>
-          <th>parcel no</th>
-          <th>sender</th>
-          <th>receiver</th>
-          <th>from</th>
-          <th>to</th>
-          <th>status</th>
-          <th>details</th>
-          <th>action</th>
-          
-        </tr>
-        <tr *ngFor="let order of orders ">
-          <td>{{order.id}}</td>
-          <td>{{order.sender}}</td>
-          <td>{{order.receiver}}</td>
-          <td>{{order.from}}</td>
-          <td>{{order.to}}</td>
-          <td>{{order.status}}</td>
-          <td><button>more</button></td>
-          <td><i class="fa-solid fa-trash"></i></td>
-        </tr>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>parcel no</th>
+            <th>sender</th>
+            <th>receiver</th>
+            <th>from</th>
+            <th>to</th>
+            <th>status</th>
+            <th>details</th>
+            <th>action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders | paginate: {itemsPerPage: 2, currentPage: p }">
+            <td>{{ order.id }}</td>
+            <td>{{ order.sender }}</td>
+            <td>{{ order.receiver }}</td>
+            <td>{{ order.from }}</td>
+            <td>{{ order.to }}</td>
+            <td>{{ order.status }}</td>
+            <td><button>more</button></td>
+            <td><i class="fa-solid fa-trash"></i></td>
+          </tr>
+        </tbody>
       </table>
     </div>
+  </div>
+  <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>

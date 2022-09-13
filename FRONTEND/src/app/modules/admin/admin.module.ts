@@ -7,13 +7,14 @@ import { DeliveredOrdersComponent } from './components/delivered-orders/delivere
 import { DispatchedOrdersComponent } from './components/dispatched-orders/dispatched-orders.component';
 import { AllOrdersComponent } from './components/all-orders/all-orders.component';
 import { NewParcelOrderComponent } from './components/new-parcel-order/new-parcel-order.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientsComponent } from './components/clients/clients.component';
 import { StoreModule } from '@ngrx/store';
 import { OrderReducer } from 'src/app/Redux/Reducers/OrdersReducers';
 import { EffectsModule } from '@ngrx/effects';
 import { OrderEffectsService } from 'src/app/Redux/Effects/OrdersEffects';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+// import { SearchParcelPipe } from './pipes/search-parcel.pipe';
 
 
 @NgModule({
@@ -24,14 +25,19 @@ import { OrderEffectsService } from 'src/app/Redux/Effects/OrdersEffects';
     AllOrdersComponent,
     NewParcelOrderComponent,
     ClientsComponent,
+    // SearchParcelPipe,
+  
   
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
+    NgxPaginationModule,
     StoreModule.forFeature('order',OrderReducer),
     EffectsModule.forFeature([OrderEffectsService]),
+   
   ]
 })
 export class AdminModule { }
