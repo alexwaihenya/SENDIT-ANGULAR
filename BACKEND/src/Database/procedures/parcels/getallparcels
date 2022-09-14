@@ -1,0 +1,18 @@
+CREATE PROCEDURE getAllProjects
+
+AS 
+BEGIN
+
+SELECT * FROM PARCELS
+
+END
+
+CREATE PROCEDURE getAllParcels
+
+AS 
+BEGIN
+
+SELECT * FROM PARCELS
+WHERE is_deleted = 0
+
+END

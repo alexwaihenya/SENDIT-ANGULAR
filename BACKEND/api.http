@@ -4,8 +4,8 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-    "username":"viola",
-    "email": "abc@gmail.com",
+    "username":"Dan",
+    "email": "kakinyidk@gmail.com",
     "password": "12345678"
 }
 
@@ -20,8 +20,37 @@ Content-Type: application/json
 }
 ###
 GET http://localhost:5000/users/check
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAxMSwidXNlcm5hbWUiOiJ2aW9sYSIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYyNTgwMzE5LCJleHAiOjE2NjI1ODIzMTl9.FOLDc15k9hVy_1CbplG4kY7Zrday9K2qWExNpagO5Vg
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkFsZXgiLCJlbWFpbCI6Imx4d2FpaGVueWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NjMwNTU5MjAsImV4cCI6MTY2MzA1NzkyMH0.Rl6VyOkT4NzhgHqvqBniV10Yn9fWNxwmlpv31cF5I1w
 ###
 
 GET http://localhost:5000/users/homepage
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAxMSwidXNlcm5hbWUiOiJ2aW9sYSIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYyNTgwMzE5LCJleHAiOjE2NjI1ODIzMTl9.FOLDc15k9hVy_1CbplG4kY7Zrday9K2qWExNpagO5Vg
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkFsZXgiLCJlbWFpbCI6Imx4d2FpaGVueWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NjMwNTU5MjAsImV4cCI6MTY2MzA1NzkyMH0.Rl6VyOkT4NzhgHqvqBniV10Yn9fWNxwmlpv31cF5I1w
+
+### get all users
+GET http://localhost:5000/users/all
+Content-Type: application/json
+
+
+### adding parcel
+POST http://localhost:5000/parcels/add
+Content-Type: application/json
+
+{
+    "senderemail":"justus@gmail.com",
+    "receiveremail": "morris@gmail.com",
+    "parcel_desc":"fragile",
+    "fromLoc": "Othaya",
+    "toLoc":"Nairobi",
+    "status":"dispatched",
+    "weight":"60",
+    "price":"800"
+    
+}
+
+### get all parcels 
+GET http://localhost:5000/parcels/all
+Content-Type: application/json
+
+### deleting parcel
+GET http://localhost:5000/parcels/deleteparcel/7
+Content-Type: application/json

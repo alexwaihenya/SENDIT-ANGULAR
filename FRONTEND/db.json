@@ -110,6 +110,46 @@
       "weight": 778,
       "price": 5000,
       "id": 9
+    },
+    {
+      "sender": "Alex",
+      "receiver": "Dan",
+      "parcel_desc": "Fragile",
+      "from": "Nyeri",
+      "to": "Nairobi",
+      "receiveremail": "dk@gmail.com",
+      "dispatch_date": "2022-09-13",
+      "delivery_date": "2022-09-14",
+      "status": "dispatched",
+      "weight": 50,
+      "price": 5000,
+      "id": 10
+    },
+    {
+      "senderemail": "kk@gmail.com",
+      "receiveremail": "dk@gmail.com",
+      "parcel_desc": "fragile",
+      "from": "Kitui",
+      "to": "Nyeri",
+      "dispatch_date": "2022-09-14",
+      "delivery_date": "2022-09-15",
+      "status": "dispatched",
+      "weight": 5,
+      "price": 250,
+      "id": 11
+    },
+    {
+      "senderemail": "dk@gmail.com",
+      "receiveremail": "dk@gmail.com",
+      "parcel_desc": "docs",
+      "from": "nyeri",
+      "to": "nairobi",
+      "dispatch_date": "2022-09-14",
+      "delivery_date": "2022-09-15",
+      "status": "dispatched",
+      "weight": 56,
+      "price": 7000,
+      "id": 12
     }
   ]
 }

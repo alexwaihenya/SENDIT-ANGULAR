@@ -40,29 +40,29 @@ export const getOrderid = createSelector(
 export const getOrder = createSelector(
   getProductFeatureState,
   getOrderid,
-  (state, id) => state.orders.find((order) => order.id === id)
+  (state, parcelid) => state.orders.find((order) => order.parcel_id === parcelid)
 );
 
 
 export const OrderReducer = createReducer(
     initialState,
-    on(Actions.LoadOrdersSuccess, (state, action): OrderState => {
+    on(Actions.LoadParcelsSuccess, (state, action): OrderState => {
         return { ...state, orders: action.orders };
     }),
-    on(Actions.LoadOrdersFailure, (state, action): OrderState => {
+    on(Actions.LoadParcelsFailure, (state, action): OrderState => {
         return { ...state, ordersError: action.error };
     }),
-    on(Actions.DeleteOrderSuccess, (state, action): OrderState => {
+    on(Actions.DeleteParcelSuccess, (state, action): OrderState => {
         return { ...state, deleteMessage: action.deletemessage };
     }),
-    on(Actions.DeleteOrderFailure, (state, action): OrderState => {
+    on(Actions.DeleteParcelFailure, (state, action): OrderState => {
         return { ...state, error: action.error };
     }),
     on(Actions.SelectedId, (state, action): OrderState => {
         return { ...state, orderid: action.id };
-    }), on(Actions.AddOrderSuccess, (state, action): OrderState => {
+    }), on(Actions.AddParcelSuccess, (state, action): OrderState => {
         return { ...state, addMessage: action.addMessage }
-    }), on(Actions.AddOrderFailure, (state, action): OrderState => {
+    }), on(Actions.AddParcelFailure, (state, action): OrderState => {
         return { ...state, error: action.error }
 
     }));

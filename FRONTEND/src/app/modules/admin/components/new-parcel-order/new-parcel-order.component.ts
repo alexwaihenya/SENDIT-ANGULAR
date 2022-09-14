@@ -20,17 +20,21 @@ export class NewParcelOrderComponent implements OnInit {
   ngOnInit(): void {
 
     this.parcelform = this.fb.group({
-      sender: ['', [Validators.required]],
-      receiver: ['', [Validators.required]],
+      senderemail: ['', [Validators.required]],
+      receiveremail: ['', [Validators.required]],
       parcel_desc: ['', [Validators.required]],
       from: ['', [Validators.required]],
       to: ['', [Validators.required]],
-      receiveremail: ['select', [Validators.required]],
+      // receiveremail: ['select', [Validators.required]],
       dispatch_date: ['', [Validators.required]],
       delivery_date: ['', [Validators.required]],
       status: ['', [Validators.required]],
       weight: ['', [Validators.required]],
       price: ['', [Validators.required]]
+    })
+
+    this.parcelform.get('weight')?.valueChanges.subscribe(res=>{
+      this.parcelform.get('price')!.setValue(res * 50)
     })
   }
 
@@ -38,8 +42,8 @@ export class NewParcelOrderComponent implements OnInit {
 
     console.log(this.parcelform.value);
 
-    this.store.dispatch(Actions.AddOrder({newOrder: this.parcelform.value}))
-    this.store.dispatch(Actions.LoadOrders())
+    this.store.dispatch(Actions.AddParcel({newOrder: this.parcelform.value}))
+    this.store.dispatch(Actions.LoadParcels())
     this.router.navigate(['/admin/all-orders'])
 
 

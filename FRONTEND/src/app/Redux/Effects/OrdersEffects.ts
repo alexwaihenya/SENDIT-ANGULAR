@@ -14,33 +14,33 @@ export class OrderEffectsService {
     constructor(private actions: Actions, private orderService: ApiUserService) { }
 
 
-    addProduct = createEffect(() => {
+    addParcel = createEffect(() => {
         return this.actions.pipe(
-            ofType(OrdersActions.AddOrder),
+            ofType(OrdersActions.AddParcel),
             mergeMap(action => this.orderService.createParcel(action.newOrder).pipe(
-                map(res => OrdersActions.AddOrderSuccess({ addMessage: res.message })),
-                catchError(error => of(OrdersActions.AddOrderFailure({ error: error })))
+                map(res => OrdersActions.AddParcelSuccess({ addMessage: res.message })),
+                catchError(error => of(OrdersActions.AddParcelFailure({ error: error })))
             ))
         )
     })
 
-    loadOrder = createEffect(() => {
+    loadParcel = createEffect(() => {
         return this.actions.pipe(
-            ofType(OrdersActions.LoadOrders),
+            ofType(OrdersActions.LoadParcels),
             concatMap(() => this.orderService.getParcels().pipe(
-                map(orders => OrdersActions.LoadOrdersSuccess({ orders })),
-                catchError(error => of(OrdersActions.LoadOrdersFailure({ error: error.message })))
+                map(orders => OrdersActions.LoadParcelsSuccess({ orders })),
+                catchError(error => of(OrdersActions.LoadParcelsFailure({ error: error.message })))
             ))
         )
     })
 
 
-    deleteOrder = createEffect(() => {
+    deleteParcel = createEffect(() => {
         return this.actions.pipe(
-            ofType(OrdersActions.DeleteOrder),
+            ofType(OrdersActions.DeleteParcel),
             mergeMap(action => this.orderService.deleteParcel(action.id).pipe(
-                map(res => OrdersActions.DeleteOrderSuccess({ deletemessage: res.message })),
-                catchError(error => of(OrdersActions.DeleteOrderFailure({ error: error.message })))
+                map(res => OrdersActions.DeleteParcelSuccess({ deletemessage: res.message })),
+                catchError(error => of(OrdersActions.DeleteParcelFailure({ error: error.message })))
             ))
 
         )

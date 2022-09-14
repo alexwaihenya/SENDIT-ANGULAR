@@ -9,23 +9,24 @@ import { IUser } from 'src/app/intefaces/user';
   providedIn: 'root'
 })
 export class ApiUserService {
-  baseUrl: string = "http://localhost:3000"
+  baseUrl: string = "http://localhost:5000/parcels"
   orders$!:Observable<IParcel[]>
 
   constructor(private http:HttpClient) { }
 
-  getParcels() : Observable <IParcel[]>{
-    return this.http.get<IParcel[]>(`${this.baseUrl}/orders`)
+  getParcels() : Observable <any>{
+    return this.http.get<any>(`${this.baseUrl}/all`)
   }
   getParcelDetails(id:number): Observable<IParcel[]>{
     return this.http.get<IParcel[]>(`${this.baseUrl}/orders/${id}`)
   }
   
   deleteParcel(id:number): Observable <{message:string}>{
-    return this.http.delete<{message:string}>(`${this.baseUrl}/orders/${id}`)
+    return this.http.delete<{message:string}>(`${this.baseUrl}/deleteparcel/${id}`)
   }
   createParcel(order:IParcel):Observable<{message:string}>{
-    return this.http.post<{message:string}>(`${this.baseUrl}/orders`, order)
+    return this.http.post<{message:string}>(`${this.baseUrl}/add`, order)
+    // return this.http.post<{message:string}>('http://localhost:5000/parcels/add',order)
   }
 
 
