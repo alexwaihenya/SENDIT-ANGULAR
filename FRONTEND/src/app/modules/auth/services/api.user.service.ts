@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LockChanges } from '@ngrx/store-devtools/src/actions';
 import { map, Observable } from 'rxjs';
 import { IParcel } from 'src/app/intefaces';
 import { Irole } from 'src/app/intefaces/Irole';
@@ -14,8 +15,8 @@ export class ApiUserService {
 
   constructor(private http:HttpClient) { }
 
-  getParcels() : Observable <any>{
-    return this.http.get<any>(`${this.baseUrl}/all`)
+  getParcels() : Observable <IParcel[]>{
+    return this.http.get<IParcel[]>(`${this.baseUrl}/all`)
   }
   getParcelDetails(id:number): Observable<IParcel[]>{
     return this.http.get<IParcel[]>(`${this.baseUrl}/orders/${id}`)
@@ -25,6 +26,8 @@ export class ApiUserService {
     return this.http.delete<{message:string}>(`${this.baseUrl}/deleteparcel/${id}`)
   }
   createParcel(order:IParcel):Observable<{message:string}>{
+    console.log(order);
+    
     return this.http.post<{message:string}>(`${this.baseUrl}/add`, order)
     // return this.http.post<{message:string}>('http://localhost:5000/parcels/add',order)
   }

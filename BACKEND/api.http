@@ -36,14 +36,14 @@ POST http://localhost:5000/parcels/add
 Content-Type: application/json
 
 {
-    "senderemail":"justus@gmail.com",
-    "receiveremail": "morris@gmail.com",
+    "senderemail":"dan@gmail.com",
+    "receiveremail": "mercy@gmail.com",
     "parcel_desc":"fragile",
     "fromLoc": "Othaya",
     "toLoc":"Nairobi",
     "status":"dispatched",
     "weight":"60",
-    "price":"800"
+    "price":"300"
     
 }
 
@@ -52,5 +52,5 @@ GET http://localhost:5000/parcels/all
 Content-Type: application/json
 
 ### deleting parcel
-GET http://localhost:5000/parcels/deleteparcel/7
-Content-Type: application/json
+DELETE  http://localhost:5000/parcels/deleteparcel/13
+
