@@ -12,8 +12,8 @@ import * as Actions from '../../../../Redux/Actions/OrdersActions'
   styleUrls: ['./all-orders.component.css']
 })
 export class AllOrdersComponent implements OnInit {
-  orders:any;
-  filter:string = ''
+  // orders:any;
+  filter: string = ''
   p: number = 1
 
   parcel_id!: number
@@ -21,7 +21,7 @@ export class AllOrdersComponent implements OnInit {
 
 
 
-  constructor(private route: ActivatedRoute,private parcelService:ApiUserService, private store: Store<OrderState>) { }
+  constructor(private route: ActivatedRoute, private parcelService: ApiUserService, private store: Store<OrderState>) { }
 
   ngOnInit(): void {
 
@@ -32,26 +32,26 @@ export class AllOrdersComponent implements OnInit {
     })
     this.store.dispatch(Actions.SelectedId({ id: this.parcel_id }))
     this.getAll()
+    // this.deleteParcel(this.parcel_id)
+
+    this.store.dispatch(Actions.LoadParcels())
 
   }
   orders$ = this.store.select(getOrders)
 
   getAll() {
 
-    this.parcelService.getParcels().subscribe({
-      next:(data) =>{
-        console.log(data);
-        this.orders = data.results;
-        
-      }, 
-      error:(error) => console.error(error),
-      
-      complete:() => console.log("complete loading the parcels")
-      
-    })
+
+
     this.store.dispatch(Actions.LoadParcels())
 
 
+  }
+  deleteParcel(parcel_id: number) {
+    this.store.dispatch(Actions.DeleteParcel({ parcel_id: parcel_id }));
+    console.log(parcel_id)
+    // this.store.dispatch(Actions.LoadParcels())
+    // this.store.dispatch(Actions.LoadParcels())
   }
 
   display: any;
@@ -79,6 +79,6 @@ export class AllOrdersComponent implements OnInit {
       lng: 36.821946,
     },
   ];
-  
+
 
 }

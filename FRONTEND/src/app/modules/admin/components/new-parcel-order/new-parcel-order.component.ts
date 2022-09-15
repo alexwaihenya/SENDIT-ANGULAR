@@ -23,8 +23,8 @@ export class NewParcelOrderComponent implements OnInit {
       senderemail: ['', [Validators.required]],
       receiveremail: ['', [Validators.required]],
       parcel_desc: ['', [Validators.required]],
-      from: ['', [Validators.required]],
-      to: ['', [Validators.required]],
+      fromLoc: ['', [Validators.required]],
+      toLoc: ['', [Validators.required]],
       // receiveremail: ['select', [Validators.required]],
       dispatch_date: ['', [Validators.required]],
       delivery_date: ['', [Validators.required]],
@@ -42,7 +42,7 @@ export class NewParcelOrderComponent implements OnInit {
 
     console.log(this.parcelform.value);
 
-    this.store.dispatch(Actions.AddParcel({newOrder: this.parcelform.value}))
+    this.store.dispatch(Actions.AddParcel({newParcel: this.parcelform.value}))
     this.store.dispatch(Actions.LoadParcels())
     this.router.navigate(['/admin/all-orders'])
 

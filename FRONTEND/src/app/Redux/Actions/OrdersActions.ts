@@ -6,13 +6,13 @@ export const SelectedId= createAction('SelectedId', props<{id:number}>())
 
 export const LoadParcels = createAction('LoadParcels')
 export const LoadParcelsSuccess = createAction('LoadParcelsSuccess',
-props<{orders:IParcel[]}>())
+props<{parcels:IParcel[]}>())
 export const LoadParcelsFailure = createAction('LoadParcelsFailure',
 props<{error:string}>())
 
 
 export const AddParcel= createAction('AddParcel',
-props<{newOrder:IParcel}>()
+props<{newParcel:IParcel}>()
 )
 export const AddParcelSuccess= createAction('AddParcelSuccess',
 props<{addMessage:string}>()
@@ -22,7 +22,7 @@ props<{error:string}>()
 )
 
 export const DeleteParcel = createAction('DeleteParcel',
-props<{id:number}>())
+props<{parcel_id:number}>())
 export const DeleteParcelSuccess = createAction('DeleteParcelSuccess',
 props<{deletemessage:string}>())
 export const DeleteParcelFailure=createAction('DeleteParcelFailure',

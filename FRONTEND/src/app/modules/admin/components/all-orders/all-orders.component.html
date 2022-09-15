@@ -18,16 +18,16 @@
             <th>action</th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let items of orders | paginate: {itemsPerPage: 6, currentPage: p }">
-            <td>{{ items.parcel_id }}</td>
-            <td>{{ items.senderemail }}</td>
-            <td>{{ items.receiveremail }}</td>
-            <td>{{ items.from }}</td>
-            <td>{{ items.to }}</td>
-            <td>{{ items.status }}</td>
+        <tbody *ngIf="orders$ | async as orders">
+          <tr *ngFor="let order of  orders | paginate: {itemsPerPage: 6, currentPage: p }">
+            <td>{{ order.parcel_id }}</td>
+            <td>{{ order.senderemail }}</td>
+            <td>{{ order.receiveremail }}</td>
+            <td>{{ order.from }}</td>
+            <td>{{ order.to }}</td>
+            <td>{{ order.status }}</td>
             <td><button>more</button></td>
-            <td><i class="fa-solid fa-trash"></i></td>
+            <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id)"></i></td>
           </tr>
         </tbody>
       </table>

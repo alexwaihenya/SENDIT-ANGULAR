@@ -66,14 +66,14 @@ export const getAllParcels = async(req:parcelCustom,res:Response)=>{
         }
 
         const results = await (await pool.request().execute('getAllParcels')).recordset
-        if(results.length == 0){
-            return res.status(406).send({
-                message:"no entries found...."
-            })
-        }
-        return res.status(201).send({
+        // if(results.length == 0){
+        //     return res.status(406).send({
+        //         message:"no entries found...."
+        //     })
+        // }
+        return res.status(201).send(
             results
-        })
+        )
         
     } catch (error) {
 

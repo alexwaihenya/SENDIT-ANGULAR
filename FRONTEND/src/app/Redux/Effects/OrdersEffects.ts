@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core"
 import { Actions, createEffect, ofType } from "@ngrx/effects"
-import { catchError, concatMap, map, mergeMap, of } from "rxjs"
+import { Store } from "@ngrx/store"
+import { catchError, concatMap, map, mergeMap, of, tap } from "rxjs"
 import { ApiUserService } from "src/app/modules/auth/services/api.user.service"
 
 import * as OrdersActions from '../Actions/OrdersActions'
@@ -11,13 +12,13 @@ import * as OrdersActions from '../Actions/OrdersActions'
 
 
 export class OrderEffectsService {
-    constructor(private actions: Actions, private orderService: ApiUserService) { }
+    constructor(private actions: Actions,private store: Store, private parcelService: ApiUserService) { }
 
 
     addParcel = createEffect(() => {
         return this.actions.pipe(
             ofType(OrdersActions.AddParcel),
-            mergeMap(action => this.orderService.createParcel(action.newOrder).pipe(
+            mergeMap(action => this.parcelService.createParcel(action.newParcel).pipe(
                 map(res => OrdersActions.AddParcelSuccess({ addMessage: res.message })),
                 catchError(error => of(OrdersActions.AddParcelFailure({ error: error })))
             ))
@@ -27,8 +28,8 @@ export class OrderEffectsService {
     loadParcel = createEffect(() => {
         return this.actions.pipe(
             ofType(OrdersActions.LoadParcels),
-            concatMap(() => this.orderService.getParcels().pipe(
-                map(orders => OrdersActions.LoadParcelsSuccess({ orders })),
+            concatMap(() => this.parcelService.getParcels().pipe(
+                map(parcels => OrdersActions.LoadParcelsSuccess({ parcels })),
                 catchError(error => of(OrdersActions.LoadParcelsFailure({ error: error.message })))
             ))
         )
@@ -38,7 +39,8 @@ export class OrderEffectsService {
     deleteParcel = createEffect(() => {
         return this.actions.pipe(
             ofType(OrdersActions.DeleteParcel),
-            mergeMap(action => this.orderService.deleteParcel(action.id).pipe(
+            mergeMap(action => this.parcelService.deleteParcel(action.parcel_id).pipe(
+                tap(res=>this.store.dispatch(OrdersActions.LoadParcels())),
                 map(res => OrdersActions.DeleteParcelSuccess({ deletemessage: res.message })),
                 catchError(error => of(OrdersActions.DeleteParcelFailure({ error: error.message })))
             ))

@@ -47,7 +47,7 @@ export const getOrder = createSelector(
 export const OrderReducer = createReducer(
     initialState,
     on(Actions.LoadParcelsSuccess, (state, action): OrderState => {
-        return { ...state, orders: action.orders };
+        return { ...state, orders: action.parcels };
     }),
     on(Actions.LoadParcelsFailure, (state, action): OrderState => {
         return { ...state, ordersError: action.error };
