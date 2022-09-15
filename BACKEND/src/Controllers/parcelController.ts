@@ -26,12 +26,10 @@ export const addParcel = async(req:parcelCustom,res:Response)=>{
             
         
         } = req.body
+        // console.log(req.body);
+        
 
         const pool = await mssql.connect(sqlConfig)
-        if(pool.connected){
-            console.log('connected successfully...');
-            
-        }
         await pool.request()
         .input('senderemail',mssql.VarChar,senderemail)
         .input('receiveremail',mssql.VarChar,receiveremail)
@@ -71,9 +69,9 @@ export const getAllParcels = async(req:parcelCustom,res:Response)=>{
                 message:"no entries found...."
             })
         }
-        return res.status(201).send({
+        return res.status(201).json(
             results
-        })
+        )
         
     } catch (error) {
 

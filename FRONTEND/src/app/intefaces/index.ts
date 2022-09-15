@@ -19,7 +19,7 @@ export interface UpdateResponse{
 
 
 export interface IParcel{
-    parcel_id?:number, 
+    parcel_id:number, 
     senderemail:string
     receiveremail:string
     parcel_desc:string

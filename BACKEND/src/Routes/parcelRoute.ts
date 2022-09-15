@@ -5,7 +5,7 @@ import { addParcel, deleteParcel, getAllParcels } from "../Controllers/parcelCon
 
 const parcelrouter = Router()
 parcelrouter.post('/add',addParcel)
-parcelrouter.get("/deleteparcel/:parcel_id",deleteParcel)
+parcelrouter.delete("/deleteparcel/:parcel_id",deleteParcel)
 parcelrouter.get('/all',getAllParcels)
 
 

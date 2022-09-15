@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { IParcel } from 'src/app/intefaces';
 import { ApiUserService } from 'src/app/modules/auth/services/api.user.service';
 import { getOrder, getOrders, OrderState } from 'src/app/Redux/Reducers/OrdersReducers';
@@ -12,47 +11,54 @@ import * as Actions from '../../../../Redux/Actions/OrdersActions'
   styleUrls: ['./all-orders.component.css']
 })
 export class AllOrdersComponent implements OnInit {
-  orders:any;
-  filter:string = ''
+
+  filter: string = ''
   p: number = 1
 
-  parcel_id!: number
+  // parcel_id!: number
+  id!: number
 
 
 
 
-  constructor(private route: ActivatedRoute,private parcelService:ApiUserService, private store: Store<OrderState>) { }
+  constructor(private route: ActivatedRoute, private parcelService: ApiUserService, private store: Store<OrderState>) { }
 
   ngOnInit(): void {
 
 
 
     this.route.params.subscribe((param) => {
-      this.parcel_id = +param['id']
+      this.id = param['id']
     })
-    this.store.dispatch(Actions.SelectedId({ id: this.parcel_id }))
+
+    this.store.dispatch(Actions.SelectedId({ id: this.id }))
     this.getAll()
+    // this.deleteParcel(this.id)
 
   }
   orders$ = this.store.select(getOrders)
 
   getAll() {
 
-    this.parcelService.getParcels().subscribe({
-      next:(data) =>{
-        console.log(data);
-        this.orders = data.results;
-        
-      }, 
-      error:(error) => console.error(error),
-      
-      complete:() => console.log("complete loading the parcels")
-      
-    })
+    
     this.store.dispatch(Actions.LoadParcels())
 
 
   }
+
+  deleteParcel(id:number,event:Event) {
+    console.log(id);
+    
+    this.store.dispatch(Actions.DeleteParcel({id}))
+    this.store.dispatch(Actions.LoadParcels())
+
+  
+
+    
+
+  }
+
+
 
   display: any;
   center: google.maps.LatLngLiteral = {
@@ -79,6 +85,6 @@ export class AllOrdersComponent implements OnInit {
       lng: 36.821946,
     },
   ];
-  
+
 
 }
