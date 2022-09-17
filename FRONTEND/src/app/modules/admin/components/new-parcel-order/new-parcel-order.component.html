@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="parcelform">
+    <h3>CREATE PARCEL ORDER</h3>
+
+    <form [formGroup]="parcelform" (ngSubmit)="addParcel()">
+      <div class="form-control">
+        <label for="receiveremail">SENDER EMAIL</label>
+        <select formControlName="senderemail">
+          <option value="kk@gmail.com">kk@gmail.com</option>
+          <option value="dk@gmail.com">dk@gmail.com</option>
+          <option value="lx@gmail.com">lx@gmail.com</option>
+        </select>
+      </div>
+   
+      <div class="form-control">
+        <label for="receiveremail">RECEIVER EMAIL</label>
+        <select formControlName="receiveremail">
+          <option value="kk@gmail.com">kk@gmail.com</option>
+          <option value="dk@gmail.com">dk@gmail.com</option>
+          <option value="lx@gmail.com">lx@gmail.com</option>
+        </select>
+      </div>
+   
+      <div class="form-control">
+        <label for="parcel_desc">PARCEL DESCRIPTION</label>
+        <input type="text" required formControlName="parcel_desc" />
+        
+      </div>
+      <div class="form-control">
+        <label for="from">FROM</label>
+        <input type="text" required formControlName="fromLoc" />
+      </div>
+      <div class="form-control">
+        <label for="to">TO</label>
+        <input type="text" required formControlName="toLoc" />
+      </div>
+   
+      <div class="form-control">
+        <label for="dispatch_date">DISPATCH DATE</label>
+        <input type="date" required formControlName="dispatch_date" />
+      </div>
+      <div class="form-control">
+        <label for="delivery_date">DELIVERY DATE</label>
+        <input type="date" required formControlName="delivery_date" />
+      </div>
+      <div class="form-control">
+        <label for="status">STATUS</label>
+        <select formControlName="status">
+          <option value="dispatched">Dispatched</option>
+          <option value="delivered">Delivered</option>
+        </select>
+        
+      </div>
+      <div class="form-control">
+        <label for="weight">WEIGHT</label>
+        <input type="number" required formControlName="weight" min=0 />
+      </div>
+      <div class="form-control">
+        <label for="price">PRICE</label>
+        <input type="number" required formControlName="price" min=0 />
+      </div>
+
+      <button [disabled]="!parcelform.valid" type="submit">CREATE ORDER</button>
+    </form>
+  </div>
+</div>

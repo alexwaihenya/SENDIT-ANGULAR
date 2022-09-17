@@ -1,32 +1,25 @@
-<!-- <p>login works!</p> -->
 
+<div class="container" >
+  <div class="login" >
+    <h3>WELCOME</h3>
+    <div class="logo-a">A</div>
+    <p *ngIf="error">{{error}}</p>
 
-<div class="container">
+    <form #form="ngForm" (ngSubmit)="LogIn(form.value)">
+      <div class="form-control">
+        <label for="email">Email</label>
+        <input type="email" name="email" ngModel email #email="ngModel" required />
+      </div>
+      <span class="error" *ngIf="!email.valid && email.touched">
+        *Please enter a valid email!
+      </span>
 
-    <div class="login">
-        <h3>WELCOME</h3>
-        <div class="logo-a">
-            A
-        </div>
-        
-     <form #loginForm="ngForm" (ngSubmit)="onLogIn()">
+      <div class="form-control">
+        <label for="password">Password</label>
+        <input type="password" name="password" ngModel required />
+      </div>
 
-        <div class="form-control">
-            <label for="email">Email</label>
-            <input type="email" ngModel required>
-        </div>
-        <div class="form-control">
-            <label for="password">Password</label>
-            <input type="password" ngModel required>
-        </div>
-
-        <button type="submit" [disabled]="">LOGIN</button>
-
-
-     </form>   
-
-
-
-    </div>
-
+      <button type="submit" [disabled]="!form.valid">LOGIN</button>
+    </form>
+  </div>
 </div>

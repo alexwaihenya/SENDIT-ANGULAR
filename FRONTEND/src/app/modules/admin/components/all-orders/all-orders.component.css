@@ -1,0 +1,27 @@
+.container{
+    background-color:#D9D9D9 ;
+    height: 80.5vh;
+    position: absolute;
+    width: 75vw;
+  
+}
+input{
+  width: 350px;
+  border-radius: 7px;
+  padding: 8px;
+}
+
+
+table {
+  margin-top: 16px;
+  border-collapse: collapse;
+  width: 100%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {background-color:white;}

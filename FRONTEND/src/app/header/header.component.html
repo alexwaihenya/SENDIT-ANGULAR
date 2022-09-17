@@ -3,7 +3,7 @@
 <div class="container">
 
     <div class="logo">
-        <img src="" alt="" srcset="">
+        <!-- <img src="https://t4.ftcdn.net/jpg/02/90/98/39/360_F_290983972_mYCCKvVWzmQUhNoWIdwjSdlPADb3Prf2.jpg" alt="" srcset="" width="50px" height="50px"> -->
         <span>SendIT</span>
     </div>
 
@@ -16,9 +16,12 @@
     </div>
 
     <div class="buttons">
-        <button class="btn-login" routerLink="auth/login">Log in</button>
-        <button routerLink="auth/register">Sign Up</button>
+        <button *ngIf="!authService.isLoggedIn()" class="btn-login" routerLink="auth/login">Log in</button>
+        <button *ngIf="!authService.isLoggedIn()" routerLink="auth/register">Sign Up</button>
+        <button *ngIf="authService.isLoggedIn()" (click)="onLogout()">Log out</button>
     </div>
+
+ 
     
 
 </div>

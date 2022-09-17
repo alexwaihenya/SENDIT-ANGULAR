@@ -1,40 +1,31 @@
 <!-- <p>register works!</p> -->
 <div class="container">
-
-
-    <div class="register">
-
-        <h2>REGISTER</h2>
-        <div>
-            <h4>Hello there!!!</h4>
-            <p>You need an account to continue</p>
-        </div>
-       
-
-        <form [formGroup]="registerform" (ngSubmit)="onRegister()">
-            <div class="form-control">
-                <label for="username">USERNAME</label>
-                <input type="text" required formControlName="username">
-            </div>
-            <div class="form-control">
-                <label for="email">EMAIL</label>
-                <input type="email" required formControlName="email">
-            </div>
-            <div class="form-control">
-                <label for="password">PASSWORD</label>
-                <input type="password" required formControlName="password">
-            </div>
-
-            <button type="submit">SIGN UP</button>
-
-            
-      
-
-
-        </form>
+  <div class="register">
+    <h2>REGISTER</h2>
+    <div>
+      <!-- <p style="color: green;" ngIf=filled>Project created successfully</p><br> -->
+      <h4>Hello there!!!</h4>
+      <p>You need an account to continue</p>
     </div>
 
+    <form [formGroup]="form" (ngSubmit)="onRegister()">
+      <div class="form-control">
+        <label for="username">USERNAME</label>
+        <input type="text" required formControlName="username" />
+        <p class="error" *ngIf="!form.get('username')!.valid && form.get('username')!.touched">*please enter a valid username</p>
+      </div>
+      <div class="form-control">
+        <label for="email">EMAIL</label>
+        <input type="email" required formControlName="email" />
+        <span class="error" *ngIf="!form.get('email')!.valid && form.get('email')!.touched">*please enter a valid email</span>
+      </div>
+      <div class="form-control">
+        <label for="password">PASSWORD</label>
+        <input type="password" required formControlName="password" />
+        <span class="error" *ngIf="!form.get('password')!.valid && form.get('password')!.touched">*please enter a valid password</span>
+      </div>
 
-
-
+      <button type="submit"  [disabled]="!form.valid">SIGN UP</button>
+    </form>
+  </div>
 </div>

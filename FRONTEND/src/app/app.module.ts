@@ -6,6 +6,15 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HeaderComponent } from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { SharedModule } from './modules/shared/shared.module';
+import { GoogleMapsModule } from '@angular/google-maps';
+
+
 
 @NgModule({
   declarations: [
@@ -13,10 +22,25 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HomepageComponent,
     HeaderComponent,
     PageNotFoundComponent
+   
+  
+  
+  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({name:'Order',maxAge: 25, logOnly: environment.production }),
+    SharedModule,
+    GoogleMapsModule
+
+
+  ],
+  exports:[
+
   ],
   providers: [],
   bootstrap: [AppComponent]
