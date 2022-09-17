@@ -45,15 +45,21 @@ export class NewParcelOrderComponent implements OnInit {
     // console.log(this.parcelform.value);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
     // this.parcelService.createParcel().subscribe()
     const newParcel:IParcel={...this.parcelform.value}
     console.log(newParcel);
     
 
     this.store.dispatch(Actions.AddParcel({newParcel}))
+<<<<<<< HEAD
 =======
     this.store.dispatch(Actions.AddParcel({newParcel: this.parcelform.value}))
 >>>>>>> master
+=======
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
     this.store.dispatch(Actions.LoadParcels())
     this.router.navigate(['/admin/all-orders'])
 

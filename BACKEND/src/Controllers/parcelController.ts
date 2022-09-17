@@ -65,12 +65,16 @@ export const getAllParcels = async(req:parcelCustom,res:Response)=>{
 
         const results = await (await pool.request().execute('getAllParcels')).recordset
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
         if(results.length == 0){
             return res.status(406).send({
                 message:"no entries found...."
             })
         }
         return res.status(201).json(
+<<<<<<< HEAD
 =======
         // if(results.length == 0){
         //     return res.status(406).send({
@@ -79,6 +83,8 @@ export const getAllParcels = async(req:parcelCustom,res:Response)=>{
         // }
         return res.status(201).send(
 >>>>>>> master
+=======
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
             results
         )
         

@@ -12,10 +12,14 @@ import * as Actions from '../../../../Redux/Actions/OrdersActions'
 })
 export class AllOrdersComponent implements OnInit {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
   // orders:any;
 >>>>>>> master
+=======
+
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
   filter: string = ''
   p: number = 1
 
@@ -38,12 +42,16 @@ export class AllOrdersComponent implements OnInit {
     this.store.dispatch(Actions.SelectedId({ id: this.id }))
     this.getAll()
 <<<<<<< HEAD
+<<<<<<< HEAD
     // this.deleteParcel(this.id)
 =======
     // this.deleteParcel(this.parcel_id)
 
     this.store.dispatch(Actions.LoadParcels())
 >>>>>>> master
+=======
+    // this.deleteParcel(this.id)
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
 
   }
   orders$ = this.store.select(getOrders)
@@ -51,21 +59,28 @@ export class AllOrdersComponent implements OnInit {
   getAll() {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
 
 
 >>>>>>> master
+=======
+    
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
     this.store.dispatch(Actions.LoadParcels())
 
 
   }
+<<<<<<< HEAD
   deleteParcel(parcel_id: number) {
     this.store.dispatch(Actions.DeleteParcel({ parcel_id: parcel_id }));
     console.log(parcel_id)
     // this.store.dispatch(Actions.LoadParcels())
     // this.store.dispatch(Actions.LoadParcels())
   }
+=======
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
 
   deleteParcel(id:number,event:Event) {
     console.log(id);

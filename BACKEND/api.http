@@ -53,9 +53,14 @@ Content-Type: application/json
 
 ### deleting parcel
 <<<<<<< HEAD
+<<<<<<< HEAD
 DELETE  http://localhost:5000/parcels/deleteparcel/13
 
 =======
 DELETE  http://localhost:5000/parcels/deleteparcel/1069
 Content-Type: application/json
 >>>>>>> master
+=======
+DELETE  http://localhost:5000/parcels/deleteparcel/13
+
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6

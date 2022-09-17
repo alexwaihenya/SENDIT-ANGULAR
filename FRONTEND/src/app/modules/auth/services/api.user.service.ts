@@ -19,6 +19,7 @@ export class ApiUserService {
     return this.http.get<IParcel[]>(`${this.baseUrl}/all`)
   }
   getParcelDetails(id:number): Observable<IParcel[]>{
+<<<<<<< HEAD
     return this.http.get<IParcel[]>(`${this.baseUrl}/${id}`)
   }
   
@@ -26,14 +27,25 @@ export class ApiUserService {
     return this.http.delete<{message:string}>(`${this.baseUrl}/deleteparcel/${parcel_id}`)
   }
 <<<<<<< HEAD
+=======
+    return this.http.get<IParcel[]>(`${this.baseUrl}/orders/${id}`)
+  }
+  
+  deleteParcel(id:number): Observable <{message:string}>{
+    return this.http.delete<{message:string}>(`${this.baseUrl}/deleteparcel/${id}`)
+  }
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
   createParcel(order:IParcel):Observable<{message:string}>{
     console.log(order);
     
     return this.http.post<{message:string}>(`${this.baseUrl}/add`, order)
+<<<<<<< HEAD
 =======
   createParcel(parcel:IParcel):Observable<{message:string}>{
     return this.http.post<{message:string}>(`${this.baseUrl}/add`, parcel)
 >>>>>>> master
+=======
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
     // return this.http.post<{message:string}>('http://localhost:5000/parcels/add',order)
   }
 

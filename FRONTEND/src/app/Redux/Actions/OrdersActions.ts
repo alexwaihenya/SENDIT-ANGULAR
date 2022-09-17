@@ -22,7 +22,11 @@ props<{error:string}>()
 )
 
 export const DeleteParcel = createAction('DeleteParcel',
+<<<<<<< HEAD
 props<{parcel_id:number}>())
+=======
+props<{id:number}>())
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
 export const DeleteParcelSuccess = createAction('DeleteParcelSuccess',
 props<{deletemessage:string}>())
 export const DeleteParcelFailure=createAction('DeleteParcelFailure',

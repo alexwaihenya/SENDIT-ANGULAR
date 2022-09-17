@@ -20,12 +20,17 @@
           </tr>
         </thead>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <tbody>
           <tr *ngFor="let order of orders | paginate: {itemsPerPage: 6, currentPage: p }">
 =======
         <tbody *ngIf="orders$ | async as orders">
           <tr *ngFor="let order of  orders | paginate: {itemsPerPage: 6, currentPage: p }">
 >>>>>>> master
+=======
+        <tbody>
+          <tr *ngFor="let order of orders | paginate: {itemsPerPage: 6, currentPage: p }">
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
             <td>{{ order.parcel_id }}</td>
             <td>{{ order.senderemail }}</td>
             <td>{{ order.receiveremail }}</td>
@@ -34,10 +39,14 @@
             <td>{{ order.status }}</td>
             <td><button>more</button></td>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id,$event)"></i></td>
 =======
             <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id)"></i></td>
 >>>>>>> master
+=======
+            <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id,$event)"></i></td>
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
           </tr>
         </tbody>
       </table>
