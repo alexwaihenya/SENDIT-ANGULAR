@@ -20,6 +20,7 @@ export const addParcel = async (req: parcelCustom, res: Response) => {
             status,
             weight,
             price,
+<<<<<<< HEAD
 
 
         } = req.body
@@ -33,6 +34,25 @@ export const addParcel = async (req: parcelCustom, res: Response) => {
             weight,
             price
         })
+=======
+            
+        
+        } = req.body
+        // console.log(req.body);
+        
+
+        const pool = await mssql.connect(sqlConfig)
+        await pool.request()
+        .input('senderemail',mssql.VarChar,senderemail)
+        .input('receiveremail',mssql.VarChar,receiveremail)
+        .input('parcel_desc',mssql.VarChar,parcel_desc)
+        .input('fromLoc',mssql.VarChar,fromLoc)
+        .input('toLoc',mssql.VarChar,toLoc)
+        .input('status',mssql.VarChar,status)
+        .input('weight',mssql.Int,weight)
+        .input('price',mssql.Int,price)
+        .execute('addParcel')
+>>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
 
         return res.status(201).json({
             message: 'parcel added successfully...'
@@ -52,6 +72,33 @@ export const getAllParcels = async (req: parcelCustom, res: Response) => {
 
        const results = (await db.exec("getAllParcels")).recordset
 
+<<<<<<< HEAD
+=======
+        const results = await (await pool.request().execute('getAllParcels')).recordset
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
+        if(results.length == 0){
+            return res.status(406).send({
+                message:"no entries found...."
+            })
+        }
+        return res.status(201).json(
+<<<<<<< HEAD
+=======
+        // if(results.length == 0){
+        //     return res.status(406).send({
+        //         message:"no entries found...."
+        //     })
+        // }
+        return res.status(201).send(
+>>>>>>> master
+=======
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
+            results
+        )
+>>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
         
         return res.status(201).send(
             results

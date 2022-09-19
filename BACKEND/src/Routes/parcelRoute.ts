@@ -4,7 +4,11 @@ import { addParcel, deleteParcel, deliverParcel, getAllParcels, sentParcel, upda
 
 
 const parcelrouter = Router()
+<<<<<<< HEAD
 parcelrouter.put('/add',addParcel)
+=======
+parcelrouter.post('/add',addParcel)
+>>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
 parcelrouter.delete("/deleteparcel/:parcel_id",deleteParcel)
 parcelrouter.get('/all',getAllParcels)
 parcelrouter.put('/update/:parcel_id',updateParcel)

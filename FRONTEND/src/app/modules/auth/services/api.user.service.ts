@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LockChanges } from '@ngrx/store-devtools/src/actions';
 import { map, Observable } from 'rxjs';
 import { IParcel } from 'src/app/intefaces';
 import { Irole } from 'src/app/intefaces/Irole';
@@ -14,18 +15,46 @@ export class ApiUserService {
 
   constructor(private http:HttpClient) { }
 
-  getParcels() : Observable <any>{
-    return this.http.get<any>(`${this.baseUrl}/all`)
+  getParcels() : Observable <IParcel[]>{
+    return this.http.get<IParcel[]>(`${this.baseUrl}/all`)
   }
   getParcelDetails(id:number): Observable<IParcel[]>{
+<<<<<<< HEAD
+    return this.http.get<IParcel[]>(`${this.baseUrl}/${id}`)
+=======
+<<<<<<< HEAD
     return this.http.get<IParcel[]>(`${this.baseUrl}/${id}`)
   }
   
   deleteParcel(parcel_id:number): Observable <{message:string}>{
     return this.http.delete<{message:string}>(`${this.baseUrl}/deleteparcel/${parcel_id}`)
   }
+<<<<<<< HEAD
+=======
+    return this.http.get<IParcel[]>(`${this.baseUrl}/orders/${id}`)
+>>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
+  }
+  
+  deleteParcel(parcel_id:number): Observable <{message:string}>{
+    return this.http.delete<{message:string}>(`${this.baseUrl}/deleteparcel/${parcel_id}`)
+  }
+<<<<<<< HEAD
   createParcel(parcel:IParcel):Observable<{message:string}>{
     return this.http.post<{message:string}>(`${this.baseUrl}/add`, parcel)
+=======
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
+  createParcel(order:IParcel):Observable<{message:string}>{
+    console.log(order);
+    
+    return this.http.post<{message:string}>(`${this.baseUrl}/add`, order)
+<<<<<<< HEAD
+=======
+  createParcel(parcel:IParcel):Observable<{message:string}>{
+    return this.http.post<{message:string}>(`${this.baseUrl}/add`, parcel)
+>>>>>>> master
+=======
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
+>>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
     // return this.http.post<{message:string}>('http://localhost:5000/parcels/add',order)
   }
 

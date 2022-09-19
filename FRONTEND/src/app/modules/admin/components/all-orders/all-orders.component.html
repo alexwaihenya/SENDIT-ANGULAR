@@ -3,8 +3,9 @@
     <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
     <input type="text" placeholder="search..." [(ngModel)]="filter" />
   </div>
+
   <div>
-    <div>
+    <div *ngIf="orders$ | async as orders">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -18,16 +19,44 @@
             <th>action</th>
           </tr>
         </thead>
+<<<<<<< HEAD
         <tbody *ngIf="orders$ | async as orders">
           <tr *ngFor="let order of  orders | paginate: {itemsPerPage: 6, currentPage: p }">
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <tbody>
+          <tr *ngFor="let order of orders | paginate: {itemsPerPage: 6, currentPage: p }">
+=======
+        <tbody *ngIf="orders$ | async as orders">
+          <tr *ngFor="let order of  orders | paginate: {itemsPerPage: 6, currentPage: p }">
+>>>>>>> master
+=======
+        <tbody>
+          <tr *ngFor="let order of orders | paginate: {itemsPerPage: 6, currentPage: p }">
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
+>>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
             <td>{{ order.parcel_id }}</td>
             <td>{{ order.senderemail }}</td>
             <td>{{ order.receiveremail }}</td>
             <td>{{ order.from }}</td>
             <td>{{ order.to }}</td>
             <td>{{ order.status }}</td>
+<<<<<<< HEAD
             <td><button>edit</button></td>
             <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id)"></i></td>
+=======
+            <td><button>more</button></td>
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id,$event)"></i></td>
+=======
+            <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id)"></i></td>
+>>>>>>> master
+=======
+            <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id,$event)"></i></td>
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
+>>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
           </tr>
         </tbody>
       </table>

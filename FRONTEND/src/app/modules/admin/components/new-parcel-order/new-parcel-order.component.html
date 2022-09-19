@@ -2,7 +2,7 @@
   <div class="parcelform">
     <h3>CREATE PARCEL ORDER</h3>
 
-    <form [formGroup]="parcelform" (ngSubmit)="onCreate()">
+    <form [formGroup]="parcelform" (ngSubmit)="addParcel()">
       <div class="form-control">
         <label for="receiveremail">SENDER EMAIL</label>
         <select formControlName="senderemail">

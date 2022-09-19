@@ -20,7 +20,6 @@ const run = () => {
     node_cron_1.default.schedule('*/5 * * * * *', () => __awaiter(void 0, void 0, void 0, function* () {
         console.log('running a 5 seconds');
         yield (0, EmailService_1.default)();
-        // await SendDelivery()
     }));
 };
 run();

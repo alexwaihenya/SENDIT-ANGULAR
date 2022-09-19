@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { IParcel } from 'src/app/intefaces';
 import { ApiUserService } from 'src/app/modules/auth/services/api.user.service';
 import {
@@ -16,6 +15,7 @@ import * as Actions from '../../../../Redux/Actions/OrdersActions';
   styleUrls: ['./all-orders.component.css'],
 })
 export class AllOrdersComponent implements OnInit {
+<<<<<<< HEAD
   // orders:any;
   filter: string = '';
   p: number = 1;
@@ -27,20 +27,61 @@ export class AllOrdersComponent implements OnInit {
     private parcelService: ApiUserService,
     private store: Store<OrderState>
   ) {}
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+  // orders:any;
+>>>>>>> master
+=======
+
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
+  filter: string = ''
+  p: number = 1
+
+  // parcel_id!: number
+  id!: number
+
+
+
+
+  constructor(private route: ActivatedRoute, private parcelService: ApiUserService, private store: Store<OrderState>) { }
+>>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
 
   ngOnInit(): void {
     this.route.params.subscribe((param) => {
+<<<<<<< HEAD
       this.parcel_id = +param['id'];
     });
     this.store.dispatch(Actions.SelectedId({ id: this.parcel_id }));
     this.getAll();
     // this.deleteParcel(this.parcel_id)
+=======
+      this.id = param['id']
+    })
+
+    this.store.dispatch(Actions.SelectedId({ id: this.id }))
+    this.getAll()
+<<<<<<< HEAD
+<<<<<<< HEAD
+    // this.deleteParcel(this.id)
+=======
+    // this.deleteParcel(this.parcel_id)
+
+    this.store.dispatch(Actions.LoadParcels())
+>>>>>>> master
+=======
+    // this.deleteParcel(this.id)
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
+>>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
 
     this.store.dispatch(Actions.LoadParcels());
   }
   orders$ = this.store.select(getOrders);
 
   getAll() {
+<<<<<<< HEAD
     this.store.dispatch(Actions.LoadParcels());
   }
   deleteParcel(parcel_id: number) {
@@ -48,7 +89,46 @@ export class AllOrdersComponent implements OnInit {
     console.log(parcel_id);
     // this.store.dispatch(Actions.LoadParcels())
     // this.store.dispatch(Actions.LoadParcels())
+=======
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+    
+=======
+
+
+>>>>>>> master
+=======
+    
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
+    this.store.dispatch(Actions.LoadParcels())
+
+
+>>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
   }
+<<<<<<< HEAD
+  deleteParcel(parcel_id: number) {
+    this.store.dispatch(Actions.DeleteParcel({ parcel_id: parcel_id }));
+    console.log(parcel_id)
+    // this.store.dispatch(Actions.LoadParcels())
+    // this.store.dispatch(Actions.LoadParcels())
+  }
+=======
+>>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
+
+  deleteParcel(id:number,event:Event) {
+    console.log(id);
+    
+    this.store.dispatch(Actions.DeleteParcel({id}))
+    this.store.dispatch(Actions.LoadParcels())
+
+  
+
+    
+
+  }
+
+
 
   display: any;
   center: google.maps.LatLngLiteral = {
@@ -75,4 +155,9 @@ export class AllOrdersComponent implements OnInit {
       lng: 36.821946,
     },
   ];
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
 }
