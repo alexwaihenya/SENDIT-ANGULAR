@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<style>
+    *{
+        margin: 0;
+    }
+    .container{
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        padding: 50px;
+        gap:20px;
+    }
+    .image{
+        
+        height: 100%;
+        width: 80%;
+    
+    }
+    .logo {
+    height: 100px;
+    width: 50px;
+    
+}
+.one{
+    height:300px;
+}
+.two{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+h3  {
+    font-size: 20px;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="one"><img class="image" src="https://cdn.pixabay.com/photo/2018/02/02/11/02/logistics-3125136__340.jpg" alt=""></div>
+        <div class="two"><img class="logo" src="https://cdn.worldvectorlogo.com/logos/aurelia-1.svg" alt="">
+        <h3 class="title">SendIT</h3></div>
+        <div><p>Hi <%=name%>,</p></div>
+        <div style="font-size:16px">Dear esteemed client,you're about to experience service beyond expectations </div>
+        <div>Your convenient delivery company</div>
+        <div>Did you know that we deliver parcels countrywide?<a href="http://localhost:4200">Get Started</a></div>
+        
+    </div>
+    
+</body>
+</html>

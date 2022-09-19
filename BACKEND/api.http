@@ -4,8 +4,8 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-    "username":"Dan",
-    "email": "kakinyidk@gmail.com",
+    "username":"Alex",
+    "email": "lxwaihenya@gmail.com",
     "password": "12345678"
 }
 
@@ -43,7 +43,7 @@ Content-Type: application/json
     "toLoc":"Nairobi",
     "status":"dispatched",
     "weight":"60",
-    "price":"800"
+    "price":"9000"
     
 }
 
@@ -52,5 +52,54 @@ GET http://localhost:5000/parcels/all
 Content-Type: application/json
 
 ### deleting parcel
-DELETE  http://localhost:5000/parcels/deleteparcel/1069
+DELETE  http://localhost:5000/parcels/deleteparcel/3074
 Content-Type: application/json
+
+### update when parcel is sent
+PUT  http://localhost:5000/parcels/sent/3075
+Content-Type: application/json
+
+{
+    "senderemail":"justus@gmail.com",
+    "receiveremail": "morris@gmail.com",
+    "parcel_desc":"fragile",
+    "fromLoc": "Othaya",
+    "toLoc":"Nairobi",
+    "status":"dispatched",
+    "weight":"60",
+    "price":"800"
+
+}
+
+### update when parcel is delievered
+
+PUT  http://localhost:5000/parcels/delivered/2074
+Content-Type: application/json
+
+{
+    "senderemail":"justus@gmail.com",
+    "receiveremail": "morris@gmail.com",
+    "parcel_desc":"fragile",
+    "fromLoc": "Othaya",
+    "toLoc":"Nairobi",
+    "status":"dispatched",
+    "weight":"60",
+    "price":"800"
+
+}
+
+### adding parcel
+PUT  http://localhost:5000/parcels/update/2074
+Content-Type: application/json
+
+{
+    "senderemail":"muthonijustus@gmail.com",
+    "receiveremail": "irungumorris@gmail.com",
+    "parcel_desc":"fragile",
+    "fromLoc": "Othaya",
+    "toLoc":"Nairobi",
+    "status":"dispatched",
+    "weight":"60",
+    "price":"9000"
+    
+}

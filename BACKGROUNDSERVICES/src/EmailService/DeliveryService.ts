@@ -4,46 +4,56 @@ import dotenv from 'dotenv'
 import {sqlConfig} from '../Config/Config'
 dotenv.config()
 import sendMail from '../Helpers/Email'
-interface Task{
-    id:number
-    project_name:string
-    project_desc:string,
-    project_timeline:string,
-    email:string
-    task:string
-    issent:string
+interface Parcel{
+    parcel_id:number, 
+    senderemail:string
+    receiveremail:string
+    parcel_desc:string
+    fromLoc:Location
+    toLoc:Location
+    status:string
+    dispatch_date:string
+    delivery_date:string
+    weight:number
+    price:number
 }
 
 
-const SendEmails= async()=>{
+const SendDelivery = async()=>{
 const pool = await mssql.connect(sqlConfig)
-const tasks:Task[]= await(await pool.request().query(`
-SELECT u.email,p.id FROM Users u INNER JOIN Projects p ON p.email=u.email WHERE p.email IS NOT NULL and issent=0 and project_status=1`)).recordset
-console.log(tasks);
+const parcels:Parcel[]= await(await pool.request().query(`
+SELECT * FROM PARCELS WHERE is_delivered='no'`)).recordset
+console.log(parcels);
 
 
- for(let task of tasks){
+  for(let parcel of parcels){
+    console.log(parcel);
+    
 
-    ejs.renderFile('template/complete.ejs',{project_name:task.project_name,task:task.project_desc} ,async(error,data)=>{
+    ejs.renderFile('template/delivery.ejs',{senderemail:parcel.senderemail,fromLoc:parcel.fromLoc, delivery_date:parcel.delivery_date,toLoc:parcel.toLoc} ,async(error,data)=>{
 
         let messageoption={
             from:process.env.EMAIL,
-            to:task.email,
-            subject:"completed task",
+            to:parcel.receiveremail,
+            subject:"Parcel delivered successfully...",
             html:data,
             attachments:[
                 {
-                    filename:'task.txt',
-                    content:`I have completed my task : ${task.project_desc}`
+                    filename:'sendIT.txt',
+                    content:`parcel details : ${parcel.parcel_id}`
                 }
             ]
+
+           
         }
 
         try {
             
             await sendMail(messageoption)
-            await pool.request().query(`UPDATE Projects SET issent=1 WHERE project_status=0`)
-            console.log('Email is Sent');
+            await pool.request().query(`UPDATE PARCELS SET is_delivered='yes' WHERE parcel_id=@parcel_id `)
+            console.log('Delivery email is sent...');
+           
+            
             
         } catch (error) {
             console.log(error);
@@ -53,9 +63,9 @@ console.log(tasks);
 
     })
 
+  }
+
+
  }
 
-
-}
-
-export default SendEmails
+export default SendDelivery

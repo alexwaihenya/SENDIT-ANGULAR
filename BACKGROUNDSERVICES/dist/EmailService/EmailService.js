@@ -20,29 +20,28 @@ dotenv_1.default.config();
 const Email_1 = __importDefault(require("../Helpers/Email"));
 const SendEmails = () => __awaiter(void 0, void 0, void 0, function* () {
     const pool = yield mssql_1.default.connect(Config_1.sqlConfig);
-    const tasks = yield (yield pool.request().query(`
-SELECT u.email,p.id FROM Users u INNER JOIN Projects p ON p.email=u.email WHERE p.email IS NOT NULL and issent=0 and project_status=0`)).recordset;
-    console.log(tasks);
-    for (let task of tasks) {
-        console.log(task);
-        ejs_1.default.renderFile('template/registration.ejs', { name: task.name, task: task.description }, (error, data) => __awaiter(void 0, void 0, void 0, function* () {
+    const users = yield (yield pool.request().query(`
+SELECT email,username FROM USERS WHERE is_sent='no'`)).recordset;
+    console.log(users);
+    for (let user of users) {
+        console.log(user);
+        ejs_1.default.renderFile('template/registration.ejs', { name: user.username }, (error, data) => __awaiter(void 0, void 0, void 0, function* () {
             let messageoption = {
                 from: process.env.EMAIL,
-                to: task.email,
-                subject: "Jitu Project Task",
+                to: user.email,
+                subject: "Welcome To SendIT Delivery Services. ",
                 html: data,
                 attachments: [
                     {
-                        filename: 'task.txt',
-                        content: `You have neen assigned a task : ${task.description}`
+                        filename: 'sendIT.txt',
+                        content: `Dear: ${user.username},Welcome to the leading world delivery company.`
                     }
                 ]
             };
             try {
                 yield (0, Email_1.default)(messageoption);
-                yield pool.request().query(`UPDATE Projects SET issent=1 WHERE issent=0`);
-                console.log('Email is Sent');
-                console.log(task.id);
+                yield pool.request().query(`UPDATE USERS SET is_sent='yes' WHERE is_sent='no' `);
+                console.log('Welcome Email is Sent');
             }
             catch (error) {
                 console.log(error);

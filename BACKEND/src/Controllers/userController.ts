@@ -4,8 +4,12 @@ import { Data } from "../Interfaces/payload";
 import { User, userCustom } from "../Interfaces/userCustom";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import mssql, { RequestError } from "mssql";
+import mssql from "mssql";
 import { sqlConfig } from '../Config/Config'
+import Connection from "../DatabaseHelpers/db";
+
+const db = new Connection()
+
 
 
 
@@ -22,6 +26,12 @@ export const register = async (req: userCustom, res: Response) => {
         if (error) {
             return res.json({ error: error.details[0].message })
         }
+        // db.exec("registerUser",{
+        //     username, 
+        //     email, 
+        //     password:hashedPassword
+
+        // })
         const pool = await mssql.connect(sqlConfig)
         if (pool.connected) {
             console.log("connected");
@@ -40,8 +50,10 @@ export const register = async (req: userCustom, res: Response) => {
 
 
     } catch (error) {
+        console.log(error);
+        
         return res.status(401).json({
-            message: error
+            message: "username and email already taken,try a different..."
         })
 
     }

@@ -1,20 +1,20 @@
-CREATE PROCEDURE deleteParcel(@parcel_id INT)
+-- CREATE PROCEDURE deleteParcel(@parcel_id INT)
 
 
-AS 
-BEGIN
-	IF EXISTS(SELECT * FROM PARCELS WHERE parcel_id=@parcel_id)
-		BEGIN
-			DELETE FROM PARCELS
-			WHERE parcel_id = @parcel_id
-		END
-	ELSE
-		BEGIN
-		RAISERROR('parcel does not exist..',11, 1);
-		RETURN;
-	END
+-- AS 
+-- BEGIN
+-- 	IF EXISTS(SELECT * FROM PARCELS WHERE parcel_id=@parcel_id)
+-- 		BEGIN
+-- 			DELETE FROM PARCELS
+-- 			WHERE parcel_id = @parcel_id
+-- 		END
+-- 	ELSE
+-- 		BEGIN
+-- 		RAISERROR('parcel does not exist..',11, 1);
+-- 		RETURN;
+-- 	END
 		
-END
+-- END
 
 
 CREATE PROCEDURE deleteParcel(@parcel_id INT)

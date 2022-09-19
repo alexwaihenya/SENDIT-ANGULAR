@@ -4,52 +4,48 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IParcel } from 'src/app/intefaces';
 import { ApiUserService } from 'src/app/modules/auth/services/api.user.service';
-import { getOrder, getOrders, OrderState } from 'src/app/Redux/Reducers/OrdersReducers';
-import * as Actions from '../../../../Redux/Actions/OrdersActions'
+import {
+  getOrder,
+  getOrders,
+  OrderState,
+} from 'src/app/Redux/Reducers/OrdersReducers';
+import * as Actions from '../../../../Redux/Actions/OrdersActions';
 @Component({
   selector: 'app-all-orders',
   templateUrl: './all-orders.component.html',
-  styleUrls: ['./all-orders.component.css']
+  styleUrls: ['./all-orders.component.css'],
 })
 export class AllOrdersComponent implements OnInit {
   // orders:any;
-  filter: string = ''
-  p: number = 1
+  filter: string = '';
+  p: number = 1;
 
-  parcel_id!: number
+  parcel_id!: number;
 
-
-
-
-  constructor(private route: ActivatedRoute, private parcelService: ApiUserService, private store: Store<OrderState>) { }
+  constructor(
+    private route: ActivatedRoute,
+    private parcelService: ApiUserService,
+    private store: Store<OrderState>
+  ) {}
 
   ngOnInit(): void {
-
-
-
     this.route.params.subscribe((param) => {
-      this.parcel_id = +param['id']
-    })
-    this.store.dispatch(Actions.SelectedId({ id: this.parcel_id }))
-    this.getAll()
+      this.parcel_id = +param['id'];
+    });
+    this.store.dispatch(Actions.SelectedId({ id: this.parcel_id }));
+    this.getAll();
     // this.deleteParcel(this.parcel_id)
 
-    this.store.dispatch(Actions.LoadParcels())
-
+    this.store.dispatch(Actions.LoadParcels());
   }
-  orders$ = this.store.select(getOrders)
+  orders$ = this.store.select(getOrders);
 
   getAll() {
-
-
-
-    this.store.dispatch(Actions.LoadParcels())
-
-
+    this.store.dispatch(Actions.LoadParcels());
   }
   deleteParcel(parcel_id: number) {
     this.store.dispatch(Actions.DeleteParcel({ parcel_id: parcel_id }));
-    console.log(parcel_id)
+    console.log(parcel_id);
     // this.store.dispatch(Actions.LoadParcels())
     // this.store.dispatch(Actions.LoadParcels())
   }
@@ -79,6 +75,4 @@ export class AllOrdersComponent implements OnInit {
       lng: 36.821946,
     },
   ];
-
-
 }

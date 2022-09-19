@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<style>
+    *{
+        margin: 0;
+    }
+    .container{
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        padding: 50px;
+        gap:20px;
+    }
+    .image{
+        
+        height: 100%;
+        width: 80%;
+    
+    }
+    .logo {
+    height: 100px;
+    width: 50px;
+    
+}
+.one{
+    height:300px;
+}
+.two{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+h3  {
+    font-size: 25px;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="one"><img class="image" src="https://cdn.pixabay.com/photo/2018/05/02/21/36/transport-3369756__480.jpg" alt=""></div>
+        <div class="two"><img class="logo" src="https://cdn.worldvectorlogo.com/logos/aurelia-1.svg" alt="">
+        <h3 class="title">SendIT</h3></div>
+        <div style="font-size:20px"><p>Hello, </p></div>
+        <div style="font-size:20px">The parcel of id   <%=parcel_id%>  has been delivered successfully</div>
+        <div style="font-size:20px"> <a href="http://localhost:4200">Login</a>  to your account to view the details of the parcel</div>
+      
+    </div>
+    
+</body>
+</html>

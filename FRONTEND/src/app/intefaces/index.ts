@@ -23,8 +23,8 @@ export interface IParcel{
     senderemail:string
     receiveremail:string
     parcel_desc:string
-    from:Location
-    to:Location
+    fromLoc:Location
+    toLoc:Location
     status:string
     dispatch_date:string
     delivery_date:string

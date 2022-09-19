@@ -4,8 +4,10 @@ CREATE TABLE USERS
     username VARCHAR(200) NOT NULL UNIQUE,
     email VARCHAR(200) NOT NULL UNIQUE,
     password VARCHAR(200) NOT NULL,
-    role VARCHAR(200) DEFAULT 'user'
-    is_reg VARCHAR(200) DEFAULT 'no'
+    role VARCHAR(200) DEFAULT 'user',
+	status VARCHAR(200) DEFAULT 'active',
+	is_sent VARCHAR(200) DEFAULT 'no'
+	
     
 )
 

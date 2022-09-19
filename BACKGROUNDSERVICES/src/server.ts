@@ -1,6 +1,7 @@
 import express from 'express'
 import cron from 'node-cron'
 import SendEmails from './EmailService/EmailService'
+import SendDelivery from './EmailService/DeliveryService'
 
 const app= express()
 
@@ -11,6 +12,8 @@ const run =()=>{
 cron.schedule('*/5 * * * * *', async() => {
   console.log('running a 5 seconds');
   await SendEmails()
+  // await SendDelivery()
+  
 })
 }
 run()
