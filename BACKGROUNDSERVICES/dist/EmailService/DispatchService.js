@@ -1,6 +1,4 @@
 "use strict";
-<<<<<<< HEAD
-=======
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -20,29 +18,30 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const Config_1 = require("../Config/Config");
 dotenv_1.default.config();
 const Email_1 = __importDefault(require("../Helpers/Email"));
-const SendEmails = () => __awaiter(void 0, void 0, void 0, function* () {
+const SendDelivery = () => __awaiter(void 0, void 0, void 0, function* () {
     const pool = yield mssql_1.default.connect(Config_1.sqlConfig);
-    const tasks = yield (yield pool.request().query(`
-SELECT u.email,p.id FROM Users u INNER JOIN Projects p ON p.email=u.email WHERE p.email IS NOT NULL and issent=0 and project_status=1`)).recordset;
-    console.log(tasks);
-    for (let task of tasks) {
-        ejs_1.default.renderFile('template/complete.ejs', { project_name: task.project_name, task: task.project_desc }, (error, data) => __awaiter(void 0, void 0, void 0, function* () {
+    const parcels = yield (yield pool.request().query(`
+SELECT * FROM PARCELS WHERE is_sent='no'`)).recordset;
+    console.log(parcels);
+    for (let parcel of parcels) {
+        console.log(parcel);
+        ejs_1.default.renderFile('template/delivery.ejs', { senderemail: parcel.senderemail, fromLoc: parcel.fromLoc, delivery_date: parcel.delivery_date, toLoc: parcel.toLoc }, (error, data) => __awaiter(void 0, void 0, void 0, function* () {
             let messageoption = {
                 from: process.env.EMAIL,
-                to: task.email,
-                subject: "completed task",
+                to: parcel.receiveremail,
+                subject: "Parcel dispatched successfully...",
                 html: data,
                 attachments: [
                     {
-                        filename: 'task.txt',
-                        content: `I have completed my task : ${task.project_desc}`
+                        filename: 'sendIT.txt',
+                        content: `parcel details : ${parcel.parcel_id}`
                     }
                 ]
             };
             try {
                 yield (0, Email_1.default)(messageoption);
-                yield pool.request().query(`UPDATE Projects SET issent=1 WHERE project_status=0`);
-                console.log('Email is Sent');
+                yield pool.request().query(`UPDATE PARCELS SET is_delivered='yes' WHERE parcel_id=@parcel_id `);
+                console.log('Delivery email is sent...');
             }
             catch (error) {
                 console.log(error);
@@ -50,5 +49,4 @@ SELECT u.email,p.id FROM Users u INNER JOIN Projects p ON p.email=u.email WHERE 
         }));
     }
 });
-exports.default = SendEmails;
->>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
+exports.default = SendDelivery;
