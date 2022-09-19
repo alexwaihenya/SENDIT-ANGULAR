@@ -22,6 +22,14 @@ export const register = async (req: userCustom, res: Response) => {
 
         const { username, email, password } = req.body;
         const { error, value } = registerSchema.validate(req.body)
+  
+        const results = (await db.exec('getUser',{email})).recordset
+        if(results.length>0){
+            return res.status(401).json({
+                message: "username or email already taken,try a different..."
+            })
+
+        }
         const hashedPassword = await bcrypt.hash(password, 10)
         if (error) {
             return res.json({ error: error.details[0].message })
@@ -32,18 +40,7 @@ export const register = async (req: userCustom, res: Response) => {
             password:hashedPassword
 
         })
-        // const pool = await mssql.connect(sqlConfig)
-        // if (pool.connected) {
-        //     console.log("connected");
-
-
-        // }
-        // await pool.request()
-        //     .input('username', mssql.VarChar, username)
-        //     .input('email', mssql.VarChar, email)
-        //     .input('password', mssql.VarChar, hashedPassword)
-        //     .execute("registerUser")
-
+ 
         return res.status(201).json({
             message: "registered successfully..."
         })
@@ -52,9 +49,9 @@ export const register = async (req: userCustom, res: Response) => {
     } catch (error) {
         console.log(error);
         
-        return res.status(401).json({
-            message: "username or email already taken,try a different..."
-        })
+        // return res.status(401).json({
+        //     message: "username or email already taken,try a different..."
+        // })
 
     }
 }
@@ -69,12 +66,9 @@ export const login = async (req: userCustom, res: Response) => {
         if (error) {
             return res.json({ error: error.details[0].message })
         }
-        // const pool = await mssql.connect(sqlConfig);
+
 
         const user: User[] = (await db.exec("getUser",{email})).recordset
-        // await (await pool.request()
-        //     .input('email', mssql.VarChar, email)
-        //     .execute('getUser')).recordset
 
 
         if (!user[0]) {
@@ -123,12 +117,8 @@ export const checkUser = async (req: Extended, res: Response) => {
 export const getAllUsers = async(req:userCustom,res:Response)=>{
     try {
 
-        // const pool = await mssql.connect(sqlConfig);
+
         const results = (await db.exec("getUsers")).recordset
-        // const results =  (await pool.request().execute("getUsers")).recordset;
-        // if(results.length == 0){
-        //     return res.status(406).send("No entries found");
-        // }
         return res.status(201).json(results)
 
        

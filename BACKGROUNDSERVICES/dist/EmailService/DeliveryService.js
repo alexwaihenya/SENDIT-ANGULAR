@@ -21,11 +21,13 @@ const Email_1 = __importDefault(require("../Helpers/Email"));
 const SendDelivery = () => __awaiter(void 0, void 0, void 0, function* () {
     const pool = yield mssql_1.default.connect(Config_1.sqlConfig);
     const parcels = yield (yield pool.request().query(`
-SELECT * FROM PARCELS WHERE is_delivered='no'`)).recordset;
+SELECT * FROM PARCELS WHERE is_delivered='no' AND parcel_id=@parcel_id`)).recordset;
     console.log(parcels);
     for (let parcel of parcels) {
         console.log(parcel);
-        ejs_1.default.renderFile('template/delivery.ejs', { senderemail: parcel.senderemail, fromLoc: parcel.fromLoc, delivery_date: parcel.delivery_date, toLoc: parcel.toLoc }, (error, data) => __awaiter(void 0, void 0, void 0, function* () {
+        ejs_1.default.renderFile('template/delivery.ejs', {
+            parcel: parcel.parcel_id, senderemail: parcel.senderemail, fromLoc: parcel.fromLoc, delivery_date: parcel.delivery_date, toLoc: parcel.toLoc
+        }, (error, data) => __awaiter(void 0, void 0, void 0, function* () {
             let messageoption = {
                 from: process.env.EMAIL,
                 to: parcel.receiveremail,
@@ -33,14 +35,14 @@ SELECT * FROM PARCELS WHERE is_delivered='no'`)).recordset;
                 html: data,
                 attachments: [
                     {
-                        filename: 'sendIT.txt',
+                        // filename:'sendIT.txt',
                         content: `parcel details : ${parcel.parcel_id}`
                     }
                 ]
             };
             try {
                 yield (0, Email_1.default)(messageoption);
-                yield pool.request().query(`UPDATE PARCELS SET is_delivered='yes' WHERE parcel_id=@parcel_id `);
+                yield pool.request().query(`UPDATE PARCELS SET is_delivered='yes' WHERE parcel_id = @parcel_id`);
                 console.log('Delivery email is sent...');
             }
             catch (error) {

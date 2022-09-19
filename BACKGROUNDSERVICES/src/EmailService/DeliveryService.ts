@@ -22,7 +22,7 @@ interface Parcel{
 const SendDelivery = async()=>{
 const pool = await mssql.connect(sqlConfig)
 const parcels:Parcel[]= await(await pool.request().query(`
-SELECT * FROM PARCELS WHERE is_delivered='no'`)).recordset
+SELECT * FROM PARCELS WHERE is_delivered='no' AND parcel_id=@parcel_id`)).recordset
 console.log(parcels);
 
 
@@ -30,7 +30,8 @@ console.log(parcels);
     console.log(parcel);
     
 
-    ejs.renderFile('template/delivery.ejs',{senderemail:parcel.senderemail,fromLoc:parcel.fromLoc, delivery_date:parcel.delivery_date,toLoc:parcel.toLoc} ,async(error,data)=>{
+    ejs.renderFile('template/delivery.ejs',{
+        parcel:parcel.parcel_id,senderemail:parcel.senderemail,fromLoc:parcel.fromLoc, delivery_date:parcel.delivery_date,toLoc:parcel.toLoc} ,async(error,data)=>{
 
         let messageoption={
             from:process.env.EMAIL,
@@ -39,7 +40,7 @@ console.log(parcels);
             html:data,
             attachments:[
                 {
-                    filename:'sendIT.txt',
+                    // filename:'sendIT.txt',
                     content:`parcel details : ${parcel.parcel_id}`
                 }
             ]
@@ -50,7 +51,7 @@ console.log(parcels);
         try {
             
             await sendMail(messageoption)
-            await pool.request().query(`UPDATE PARCELS SET is_delivered='yes' WHERE parcel_id=@parcel_id `)
+            await pool.request().query(`UPDATE PARCELS SET is_delivered='yes' WHERE parcel_id = @parcel_id`)
             console.log('Delivery email is sent...');
            
             

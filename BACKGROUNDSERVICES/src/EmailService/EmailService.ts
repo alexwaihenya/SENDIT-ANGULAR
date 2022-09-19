@@ -33,7 +33,7 @@ console.log(users);
             html:data,
             attachments:[
                 {
-                    filename:'sendIT.txt',
+                    // filename:'sendIT.txt',
                     content:`Dear: ${user.username},Welcome to the leading world delivery company.`
                 }
             ]

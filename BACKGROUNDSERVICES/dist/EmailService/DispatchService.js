@@ -18,14 +18,18 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const Config_1 = require("../Config/Config");
 dotenv_1.default.config();
 const Email_1 = __importDefault(require("../Helpers/Email"));
-const SendDelivery = () => __awaiter(void 0, void 0, void 0, function* () {
+const db_1 = __importDefault(require("../DatabaseHelpers/db"));
+const db = new db_1.default();
+const SendDispatch = () => __awaiter(void 0, void 0, void 0, function* () {
     const pool = yield mssql_1.default.connect(Config_1.sqlConfig);
+    // const parcels:Parcel[]= await (await db.exec("dispatchEmail")).recordset
     const parcels = yield (yield pool.request().query(`
-SELECT * FROM PARCELS WHERE is_sent='no'`)).recordset;
+// SELECT * FROM PARCELS WHERE is_sent='no' AND parcel_id=@parcel_id`)).recordset;
+    // console.log("disparct...");
     console.log(parcels);
     for (let parcel of parcels) {
         console.log(parcel);
-        ejs_1.default.renderFile('template/delivery.ejs', { senderemail: parcel.senderemail, fromLoc: parcel.fromLoc, delivery_date: parcel.delivery_date, toLoc: parcel.toLoc }, (error, data) => __awaiter(void 0, void 0, void 0, function* () {
+        ejs_1.default.renderFile('template/dispatch.ejs', { parcelid: parcel.parcel_id, senderemail: parcel.senderemail, fromLoc: parcel.fromLoc, delivery_date: parcel.delivery_date, toLoc: parcel.toLoc }, (error, data) => __awaiter(void 0, void 0, void 0, function* () {
             let messageoption = {
                 from: process.env.EMAIL,
                 to: parcel.receiveremail,
@@ -33,15 +37,16 @@ SELECT * FROM PARCELS WHERE is_sent='no'`)).recordset;
                 html: data,
                 attachments: [
                     {
-                        filename: 'sendIT.txt',
+                        // filename:'sendIT.txt',
                         content: `parcel details : ${parcel.parcel_id}`
                     }
                 ]
             };
             try {
                 yield (0, Email_1.default)(messageoption);
-                yield pool.request().query(`UPDATE PARCELS SET is_delivered='yes' WHERE parcel_id=@parcel_id `);
-                console.log('Delivery email is sent...');
+                yield db.exec('updateDispatchEmail', { parcel_id: parcel.parcel_id });
+                // await pool.request().query(`UPDATE PARCELS SET is_sent='yes' WHERE parcel_id=@parcel_id `)
+                console.log('Dispatch email is sent...');
             }
             catch (error) {
                 console.log(error);
@@ -49,4 +54,4 @@ SELECT * FROM PARCELS WHERE is_sent='no'`)).recordset;
         }));
     }
 });
-exports.default = SendDelivery;
+exports.default = SendDispatch;

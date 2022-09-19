@@ -2,6 +2,7 @@ import { Response } from "express";
 import mssql from "mssql";
 import { sqlConfig } from "../Config/Config";
 import Connection from "../DatabaseHelpers/db";
+import { parcelSchema } from "../Helpers/parcelValidator";
 import { parcelCustom } from "../Interfaces/parcelCustom";
 
 const db = new Connection()
@@ -23,6 +24,12 @@ export const addParcel = async (req: parcelCustom, res: Response) => {
 
 
         } = req.body
+        const { error, value } = parcelSchema.validate(req.body)
+        if(error){
+            return res.status(400).json({
+                message: error.details[0].message
+            })
+        }
         db.exec('INSERTUPDATE', {
             senderemail,
             receiveremail,

@@ -4,8 +4,8 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-    "username":"Dan",
-    "email": "gamesmy177@gmail.com",
+    "username":"Daniel",
+    "email": "kakinyidk@gmail.com",
     "password": "12345678"
 }
 
@@ -16,7 +16,7 @@ Content-Type: application/json
 {
     
     "email":"gamesmy177@gmail.com",
-    "password":"12345678"  
+    "password":"1234567"  
 }
 ###
 GET http://localhost:5000/users/check
