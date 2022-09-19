@@ -4,8 +4,8 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-    "username":"Alex",
-    "email": "lxwaihenya@gmail.com",
+    "username":"Dan",
+    "email": "gamesmy177@gmail.com",
     "password": "12345678"
 }
 
@@ -15,16 +15,16 @@ Content-Type: application/json
 
 {
     
-    "email":"lxwaihenya@gmail.com",
+    "email":"gamesmy177@gmail.com",
     "password":"12345678"  
 }
 ###
 GET http://localhost:5000/users/check
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkFsZXgiLCJlbWFpbCI6Imx4d2FpaGVueWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NjMwNTU5MjAsImV4cCI6MTY2MzA1NzkyMH0.Rl6VyOkT4NzhgHqvqBniV10Yn9fWNxwmlpv31cF5I1w
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkRhbiIsImVtYWlsIjoiZ2FtZXNteTE3N0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInN0YXR1cyI6ImFjdGl2ZSIsImlzX3NlbnQiOiJ5ZXMiLCJpYXQiOjE2NjM1NzI4MjgsImV4cCI6MTY2MzU3NDgyOH0.366cKcSCLszsCIRdA5SfonPML0laVZ5R0mudFQCzOJc
 ###
 
 GET http://localhost:5000/users/homepage
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkFsZXgiLCJlbWFpbCI6Imx4d2FpaGVueWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NjMwNTU5MjAsImV4cCI6MTY2MzA1NzkyMH0.Rl6VyOkT4NzhgHqvqBniV10Yn9fWNxwmlpv31cF5I1w
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkRhbiIsImVtYWlsIjoiZ2FtZXNteTE3N0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInN0YXR1cyI6ImFjdGl2ZSIsImlzX3NlbnQiOiJ5ZXMiLCJpYXQiOjE2NjM1NzI4MjgsImV4cCI6MTY2MzU3NDgyOH0.366cKcSCLszsCIRdA5SfonPML0laVZ5R0mudFQCzOJc
 
 ### get all users
 GET http://localhost:5000/users/all
@@ -43,11 +43,7 @@ Content-Type: application/json
     "toLoc":"Nairobi",
     "status":"dispatched",
     "weight":"60",
-<<<<<<< HEAD
     "price":"9000"
-=======
-    "price":"300"
->>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
     
 }
 
@@ -56,12 +52,11 @@ GET http://localhost:5000/parcels/all
 Content-Type: application/json
 
 ### deleting parcel
-<<<<<<< HEAD
-DELETE  http://localhost:5000/parcels/deleteparcel/3074
+DELETE  http://localhost:5000/parcels/deleteparcel/3076
 Content-Type: application/json
 
 ### update when parcel is sent
-PUT  http://localhost:5000/parcels/sent/3075
+PUT  http://localhost:5000/parcels/sent/3078
 Content-Type: application/json
 
 {
@@ -78,7 +73,7 @@ Content-Type: application/json
 
 ### update when parcel is delievered
 
-PUT  http://localhost:5000/parcels/delivered/2074
+PUT  http://localhost:5000/parcels/delivered/3077
 Content-Type: application/json
 
 {
@@ -93,8 +88,8 @@ Content-Type: application/json
 
 }
 
-### adding parcel
-PUT  http://localhost:5000/parcels/update/2074
+### updating parcel
+PUT  http://localhost:5000/parcels/update/3078
 Content-Type: application/json
 
 {

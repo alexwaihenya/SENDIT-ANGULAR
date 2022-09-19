@@ -4,7 +4,7 @@ import { addParcel, deleteParcel, deliverParcel, getAllParcels, sentParcel, upda
 
 
 const parcelrouter = Router()
-parcelrouter.put('/add',addParcel)
+parcelrouter.post('/add',addParcel)
 parcelrouter.delete("/deleteparcel/:parcel_id",deleteParcel)
 parcelrouter.get('/all',getAllParcels)
 parcelrouter.put('/update/:parcel_id',updateParcel)
