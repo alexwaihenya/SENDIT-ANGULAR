@@ -72,18 +72,18 @@ export const deleteParcel = async (req: parcelCustom, res: Response) => {
     try {
 
         const parcel_id = req.params.parcel_id
-        // db.exec("deleteParcel",{
-        //     parcel_id 
-        // })
+        db.exec("deleteParcel",{
+            parcel_id 
+        })
 
-        const pool = await mssql.connect(sqlConfig)
-        if (pool.connected) {
-            console.log("Connected successfully");
+        // const pool = await mssql.connect(sqlConfig)
+        // if (pool.connected) {
+        //     console.log("Connected successfully");
 
-        }
-        await pool.request()
-            .input("parcel_id", mssql.Int, parcel_id)
-            .execute("deleteParcel")
+        // }
+        // await pool.request()
+        //     .input("parcel_id", mssql.Int, parcel_id)
+        //     .execute("deleteParcel")
 
         return res.json({
             message: "parcel deleted successfully..."
@@ -91,7 +91,7 @@ export const deleteParcel = async (req: parcelCustom, res: Response) => {
 
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
 
 
         return res.json({
@@ -107,15 +107,15 @@ export const deleteParcel = async (req: parcelCustom, res: Response) => {
 export const sentParcel = async (req: parcelCustom, res: Response) => {
     try {
         const parcel_id = req.params.parcel_id;
-        // db.exec("UPDATEPARCELSENT",{parcel_id})
-        const pool = await mssql.connect(sqlConfig)
-        if (pool.connected) {
-            console.log("Connected successfully");
+        db.exec("UPDATEPARCELSENT",{parcel_id})
+        // const pool = await mssql.connect(sqlConfig)
+        // if (pool.connected) {
+        //     console.log("Connected successfully");
 
-        }
-        await pool.request()
-            .input("parcel_id", mssql.Int, parcel_id)
-            .execute("UPDATEPARCELSENT")
+        // }
+        // await pool.request()
+        //     .input("parcel_id", mssql.Int, parcel_id)
+        //     .execute("UPDATEPARCELSENT")
         return res.json({
             message: "parcel was sent..."
         })
@@ -134,14 +134,15 @@ export const sentParcel = async (req: parcelCustom, res: Response) => {
 export const deliverParcel = async (req: parcelCustom, res: Response) => {
     try {
         const parcel_id = req.params.parcel_id;
-        const pool = await mssql.connect(sqlConfig)
-        if (pool.connected) {
-            console.log("Connected successfully");
+        db.exec("UPDATEPARCELDELIVERED",{parcel_id})
+        // const pool = await mssql.connect(sqlConfig)
+        // if (pool.connected) {
+        //     console.log("Connected successfully");
 
-        }
-        await pool.request()
-            .input("parcel_id", mssql.Int, parcel_id)
-            .execute("UPDATEPARCELDELIVERED")
+        // }
+        // await pool.request()
+        //     .input("parcel_id", mssql.Int, parcel_id)
+        //     .execute("UPDATEPARCELDELIVERED")
         return res.json({
             message: "parcel was delivered..."
         })
