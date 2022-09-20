@@ -34,9 +34,9 @@ export class UserEffectsService {
   loginUser = createEffect(() => {
     return this.actions.pipe(
       ofType(UsersActions.login),
-      concatMap((res) =>
-        this.userService.login(res.user).pipe(
-          map((res) => UsersActions.LoginSuccess({ res })),
+      mergeMap((action) =>
+        this.userService.login(action.userCredentials).pipe(
+          map((res) => UsersActions.LoginSuccess({ loginMessage:res.token})),
           catchError((error) =>
             of(UsersActions.LoginFailure({ error: error.message }))
           )

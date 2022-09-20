@@ -14,6 +14,7 @@ import { ParcelReducer } from 'src/app/Redux/Reducers/OrdersReducers';
 import { EffectsModule } from '@ngrx/effects';
 import { OrderEffectsService } from 'src/app/Redux/Effects/OrdersEffects';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EditComponent } from './components/edit/edit.component';
 // import { SearchParcelPipe } from './pipes/search-parcel.pipe';
 
 
@@ -25,6 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AllOrdersComponent,
     NewParcelOrderComponent,
     ClientsComponent,
+    EditComponent,
     // SearchParcelPipe,
   
   

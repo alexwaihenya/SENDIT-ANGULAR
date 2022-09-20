@@ -1,14 +1,15 @@
 import { createAction, props } from "@ngrx/store";
+import { LoginDetails, LoginResponse } from "src/app/intefaces";
 import { IUser } from "src/app/intefaces/user";
 
 
 
 
 export const login = createAction('login',
-props<{user:IUser}>()
+props<{userCredentials:LoginDetails}>()
 )
 export const LoginSuccess = createAction('LoginSuccess',
-props<{user:IUser[]}>()
+props<{loginMessage:string}>()
 )
 export const LoginFailure = createAction('LoginFailure',
 props<{error:string}>()

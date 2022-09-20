@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { IUser } from 'src/app/intefaces/user';
 import { ApiUserService } from '../../services/api.user.service';
 import { Irole } from 'src/app/intefaces/Irole';
+import * as Actions from '../../UserState/Actions/UsersActions'
 
 @Component({
   selector: 'app-login',
@@ -22,20 +23,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
     
-    // this.store.select('login').subscribe(state=>{
-    //   this.LogIn = state
-    // })
+   
   }
 
   role!:Irole
 
-  LogIn(data: IUser) {
-    console.log(data);
-    // this.store.dispatch({type:'LOGIN_USER'})
-    
-    
-
-    this.apiService.login(data.email,data.password).subscribe(res => {
+  LogIn(userCredentials: IUser) {
+    console.log(userCredentials);
+    // this.store.dispatch(Actions.login({userCredentials}))
+    this.apiService.login(userCredentials).subscribe(res => {
     localStorage.setItem("token",res.token)
       this.checkRole()
     })
@@ -44,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.redirect()
     }, 1000);
 
-    // this.route.navigate(['/admin/all-orders'])
+    // this.router.navigate(['/admin/all-orders'])
   }
   checkRole() {
     this.apiService.checkUser().subscribe(res => {

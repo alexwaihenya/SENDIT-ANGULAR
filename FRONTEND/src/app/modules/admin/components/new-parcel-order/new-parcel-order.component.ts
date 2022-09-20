@@ -28,8 +28,8 @@ export class NewParcelOrderComponent implements OnInit {
       fromLoc: ['', [Validators.required]],
       toLoc: ['', [Validators.required]],
       // receiveremail: ['select', [Validators.required]],
-      dispatch_date: ['', [Validators.required]],
-      delivery_date: ['', [Validators.required]],
+      // dispatch_date: ['', [Validators.required]],
+      // delivery_date: ['', [Validators.required]],
       status: ['', [Validators.required]],
       weight: ['', [Validators.required]],
       price: ['', [Validators.required]]

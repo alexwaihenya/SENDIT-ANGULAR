@@ -5,8 +5,10 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-// import { EffectsModule } from '@ngrx/effects';
-// import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { UserEffectsService } from './UserState/Effects/UsersEffects';
+import { UserReducer } from './UserState/Reducers/UsersReducers';
 
 
 
@@ -21,8 +23,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    // EffectsModule.forFeature([UserEffects]),
-    // StoreModule.forFeature('','')
+    EffectsModule.forFeature([UserEffectsService]),
+    StoreModule.forFeature('user',UserReducer)
     
   ],
 })

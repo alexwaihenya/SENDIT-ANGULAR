@@ -26,6 +26,19 @@ export const AddParcelFailure = createAction(
   props<{ error: string }>()
 );
 
+export const UpdateParcel = createAction(
+  'UpdateParcel',
+  props<{updateParcel:IParcel}>()
+);
+export const UpdateParcelSuccess = createAction(
+  'UpdateParcelSuccess',
+  props<{updateMessage:string}>()
+);
+export const UpdateParcelFailure = createAction(
+  'UpdateParcelFailure',
+  props<{error:string}>()
+)
+
 export const DeleteParcel = createAction(
   'DeleteParcel',
   props<{ parcel_id: number }>()

@@ -1,17 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LockChanges } from '@ngrx/store-devtools/src/actions';
 import { map, Observable } from 'rxjs';
 import { IParcel } from 'src/app/intefaces';
 import { Irole } from 'src/app/intefaces/Irole';
-import { IUser } from 'src/app/intefaces/user';
+import { IUser, LoginDetails } from 'src/app/intefaces/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiUserService {
   baseUrl: string = "http://localhost:5000/parcels"
-  orders$!: Observable<IParcel[]>
+  parcels$!: Observable<IParcel[]>
 
   constructor(private http: HttpClient) { }
 
@@ -33,9 +32,9 @@ export class ApiUserService {
   registerUser(user: IUser): Observable<{ message: string }> {
     return this.http.post<{ message: string }>('http://localhost:5000/users/register', user)
   }
-  login(email: string, password: string) {
+  login(userCredentials:LoginDetails) {
     this.checkUser()
-    return this.http.post<IUser>('http://localhost:5000/users/login', { email, password })
+    return this.http.post<IUser>('http://localhost:5000/users/login',userCredentials)
 
 
 

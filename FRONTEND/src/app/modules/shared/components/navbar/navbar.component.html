@@ -7,10 +7,10 @@
     </div>
 
     <div class="links">
-        <a routerLink="">HOME</a>
-        <a routerLink="">ABOUT</a>
-        <a routerLink="">PRICING</a>
-        <a routerLink="">TRACKING</a>
+        <a *ngIf="!authService.isLoggedIn()"  routerLink="">HOME</a>
+        <a *ngIf="!authService.isLoggedIn()"  routerLink="">ABOUT</a>
+        <a *ngIf="!authService.isLoggedIn()"  routerLink="">PRICING</a>
+        <a *ngIf="!authService.isLoggedIn()"  routerLink="">TRACKING</a>
 
     </div>
 

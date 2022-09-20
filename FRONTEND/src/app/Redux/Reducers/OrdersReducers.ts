@@ -14,6 +14,7 @@ export interface ParcelState {
   deleteMessage: string;
   parcel_id: number;
   addMessage: string;
+  updateMessage:string;
 }
 
 const initialState: ParcelState = {
@@ -23,6 +24,7 @@ const initialState: ParcelState = {
   deleteMessage: '',
   parcel_id: 0,
   addMessage: '',
+  updateMessage:''
 };
 
 const getParcelFeatureState = createFeatureSelector<ParcelState>('parcel');
@@ -45,25 +47,37 @@ export const getParcel = createSelector(
 
 export const ParcelReducer = createReducer(
   initialState,
+
+  on(Actions.AddParcelSuccess, (state, action): ParcelState => {
+    return { ...state, addMessage: action.addMessage };
+  }),
+  on(Actions.AddParcelFailure, (state, action): ParcelState => {
+    return { ...state, error: action.error };
+  }),
+  on(Actions.SelectedId, (state, action): ParcelState => {
+    return { ...state, parcel_id: action.id };
+  }),
+
   on(Actions.LoadParcelsSuccess, (state, action): ParcelState => {
     return { ...state, parcels: action.parcels };
   }),
   on(Actions.LoadParcelsFailure, (state, action): ParcelState => {
     return { ...state, parcelsError: action.error };
   }),
+
+  on(Actions.UpdateParcelSuccess,(state,action):ParcelState=>{
+    return {...state,updateMessage:action.updateMessage};
+  }),
+  on(Actions.UpdateParcelFailure,(state,action):ParcelState=>{
+    return {...state,error:action.error}
+  }),
+
   on(Actions.DeleteParcelSuccess, (state, action): ParcelState => {
     return { ...state, deleteMessage: action.deletemessage };
   }),
   on(Actions.DeleteParcelFailure, (state, action): ParcelState => {
     return { ...state, error: action.error };
-  }),
-  on(Actions.SelectedId, (state, action): ParcelState => {
-    return { ...state, parcel_id: action.id };
-  }),
-  on(Actions.AddParcelSuccess, (state, action): ParcelState => {
-    return { ...state, addMessage: action.addMessage };
-  }),
-  on(Actions.AddParcelFailure, (state, action): ParcelState => {
-    return { ...state, error: action.error };
   })
+ 
+
 );
