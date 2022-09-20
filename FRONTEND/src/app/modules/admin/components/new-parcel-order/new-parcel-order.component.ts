@@ -15,7 +15,7 @@ import * as Actions from '../../../../Redux/Actions/OrdersActions'
 })
 export class NewParcelOrderComponent implements OnInit {
   parcelform!: FormGroup
-  order!: IParcel[]
+  parcel!: IParcel[]
 
   constructor(private fb: FormBuilder, private parcelService: ApiUserService, private store: Store<ParcelState>, private router: Router) { }
 
@@ -42,7 +42,7 @@ export class NewParcelOrderComponent implements OnInit {
 
   addParcel() {
 
-    // console.log(this.parcelform.value);
+    console.log(this.parcelform.value);
 
     const newParcel: IParcel = { ...this.parcelform.value }
     console.log(newParcel);

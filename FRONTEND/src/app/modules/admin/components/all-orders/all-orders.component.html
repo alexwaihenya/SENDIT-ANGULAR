@@ -31,8 +31,12 @@
           <td>{{ parcel.fromLoc }}</td>
           <td>{{ parcel.toLoc }}</td>
           <td>{{ parcel.status }}</td>
-          <td><button>edit</button></td>
-          <!-- <td><i class="fa-solid fa-trash" (click)="deleteParcel(parcel.parcel_id)"></i></td> -->
+          <td>
+            <i
+              class="fa-solid fa-pen-nib"
+              (click)="updateParcel(parcel.parcel_id)"
+            ></i>
+          </td>
           <td>
             <i
               class="fa-solid fa-trash"

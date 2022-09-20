@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IParcel } from 'src/app/intefaces';
 import { ApiUserService } from 'src/app/modules/auth/services/api.user.service';
@@ -19,6 +19,7 @@ export class AllOrdersComponent implements OnInit {
 
 
   constructor(
+    private router:Router,
     private route: ActivatedRoute,
     private parcelService: ApiUserService,
     private store: Store<ParcelState>
@@ -53,6 +54,12 @@ export class AllOrdersComponent implements OnInit {
     // this.store.dispatch(Actions.LoadParcels())
 
 
+  }
+  
+  updateParcel(parcel_id: number) {
+    this.store.dispatch(Actions.SelectedId({ id: parcel_id }));
+
+    this.router.navigate(["/admin/edit"])
   }
 
 
