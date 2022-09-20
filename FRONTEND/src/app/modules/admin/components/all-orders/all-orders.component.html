@@ -5,62 +5,43 @@
   </div>
 
   <div>
-    <div *ngIf="orders$ | async as orders">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>parcel no</th>
-            <th>sender</th>
-            <th>receiver</th>
-            <th>from</th>
-            <th>to</th>
-            <th>status</th>
-            <th>details</th>
-            <th>action</th>
-          </tr>
-        </thead>
-<<<<<<< HEAD
-        <tbody *ngIf="orders$ | async as orders">
-          <tr *ngFor="let order of  orders | paginate: {itemsPerPage: 6, currentPage: p }">
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <tbody>
-          <tr *ngFor="let order of orders | paginate: {itemsPerPage: 6, currentPage: p }">
-=======
-        <tbody *ngIf="orders$ | async as orders">
-          <tr *ngFor="let order of  orders | paginate: {itemsPerPage: 6, currentPage: p }">
->>>>>>> master
-=======
-        <tbody>
-          <tr *ngFor="let order of orders | paginate: {itemsPerPage: 6, currentPage: p }">
->>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
->>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
-            <td>{{ order.parcel_id }}</td>
-            <td>{{ order.senderemail }}</td>
-            <td>{{ order.receiveremail }}</td>
-            <td>{{ order.from }}</td>
-            <td>{{ order.to }}</td>
-            <td>{{ order.status }}</td>
-<<<<<<< HEAD
-            <td><button>edit</button></td>
-            <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id)"></i></td>
-=======
-            <td><button>more</button></td>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id,$event)"></i></td>
-=======
-            <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id)"></i></td>
->>>>>>> master
-=======
-            <td><i class="fa-solid fa-trash" (click)="deleteParcel(order.parcel_id,$event)"></i></td>
->>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
->>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>parcel no</th>
+          <th>sender</th>
+          <th>receiver</th>
+          <th>from</th>
+          <th>to</th>
+          <th>status</th>
+          <th>details</th>
+          <th>action</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="parcels$ | async as parcels">
+        <tr
+          *ngFor="
+            let parcel of parcels
+              | paginate: { itemsPerPage: 6, currentPage: p }
+          "
+        >
+          <td>{{ parcel.parcel_id }}</td>
+          <td>{{ parcel.senderemail }}</td>
+          <td>{{ parcel.receiveremail }}</td>
+          <td>{{ parcel.fromLoc }}</td>
+          <td>{{ parcel.toLoc }}</td>
+          <td>{{ parcel.status }}</td>
+          <td><button>edit</button></td>
+          <!-- <td><i class="fa-solid fa-trash" (click)="deleteParcel(parcel.parcel_id)"></i></td> -->
+          <td>
+            <i
+              class="fa-solid fa-trash"
+              (click)="deleteParcel(parcel.parcel_id)"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="text-right">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>

@@ -29,7 +29,7 @@ console.log(users);
         let messageoption={
             from:process.env.EMAIL,
             to:user.email,
-            subject:"Welcome To SendIT Delivery Services. ",
+            subject:"Welcome To SendIT. ",
             html:data,
             attachments:[
                 {

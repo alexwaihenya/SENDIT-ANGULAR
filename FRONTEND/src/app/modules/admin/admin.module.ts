@@ -10,7 +10,7 @@ import { NewParcelOrderComponent } from './components/new-parcel-order/new-parce
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientsComponent } from './components/clients/clients.component';
 import { StoreModule } from '@ngrx/store';
-import { OrderReducer } from 'src/app/Redux/Reducers/OrdersReducers';
+import { ParcelReducer } from 'src/app/Redux/Reducers/OrdersReducers';
 import { EffectsModule } from '@ngrx/effects';
 import { OrderEffectsService } from 'src/app/Redux/Effects/OrdersEffects';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -35,7 +35,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
-    StoreModule.forFeature('order',OrderReducer),
+    StoreModule.forFeature('parcel',ParcelReducer),
     EffectsModule.forFeature([OrderEffectsService]),
    
   ]

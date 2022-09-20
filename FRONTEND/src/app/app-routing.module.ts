@@ -7,26 +7,36 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   // {path:'',redirectTo:'/home',pathMatch:'full'},
-  {path:'',component:HomepageComponent,children:[
-    {path:'login',component:LoginComponent},
-    
-  ]},
   {
-    path:'auth',loadChildren:()=>import('./modules/auth/auth.module').then(a=>a.AuthModule)
+    path: '',
+    component: HomepageComponent,
+    children: [{ path: 'login', component: LoginComponent }],
   },
   {
-    path:'admin',loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule),canActivate:[AuthGuard]
+    path: 'auth',
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((a) => a.AuthModule),
   },
   {
-    path:'user',loadChildren:()=>import('./modules/user/user.module').then(u=>u.UserModule),canActivate:[AuthGuard]
+    path: 'admin',
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [AuthGuard],
   },
   {
-    path:'**',component:PageNotFoundComponent
-  }
+    path: 'user',
+    loadChildren: () =>
+      import('./modules/user/user.module').then((u) => u.UserModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

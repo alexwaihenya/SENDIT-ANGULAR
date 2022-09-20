@@ -11,75 +11,44 @@ import { IUser } from 'src/app/intefaces/user';
 })
 export class ApiUserService {
   baseUrl: string = "http://localhost:5000/parcels"
-  orders$!:Observable<IParcel[]>
+  orders$!: Observable<IParcel[]>
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getParcels() : Observable <IParcel[]>{
+  getParcels(): Observable<IParcel[]> {
     return this.http.get<IParcel[]>(`${this.baseUrl}/all`)
   }
-  getParcelDetails(id:number): Observable<IParcel[]>{
-<<<<<<< HEAD
-    return this.http.get<IParcel[]>(`${this.baseUrl}/${id}`)
-=======
-<<<<<<< HEAD
+  getParcelDetails(id: number): Observable<IParcel[]> {
     return this.http.get<IParcel[]>(`${this.baseUrl}/${id}`)
   }
-  
-  deleteParcel(parcel_id:number): Observable <{message:string}>{
-    return this.http.delete<{message:string}>(`${this.baseUrl}/deleteparcel/${parcel_id}`)
-  }
-<<<<<<< HEAD
-=======
-    return this.http.get<IParcel[]>(`${this.baseUrl}/orders/${id}`)
->>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
-  }
-  
-  deleteParcel(parcel_id:number): Observable <{message:string}>{
-    return this.http.delete<{message:string}>(`${this.baseUrl}/deleteparcel/${parcel_id}`)
-  }
-<<<<<<< HEAD
-  createParcel(parcel:IParcel):Observable<{message:string}>{
-    return this.http.post<{message:string}>(`${this.baseUrl}/add`, parcel)
-=======
->>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
-  createParcel(order:IParcel):Observable<{message:string}>{
-    console.log(order);
-    
-    return this.http.post<{message:string}>(`${this.baseUrl}/add`, order)
-<<<<<<< HEAD
-=======
-  createParcel(parcel:IParcel):Observable<{message:string}>{
-    return this.http.post<{message:string}>(`${this.baseUrl}/add`, parcel)
->>>>>>> master
-=======
->>>>>>> 12ebafb145af38e63c15c48887952868a39f71e6
->>>>>>> 11a9c7def9c938dc3b1379ae6656c0d589f85ef3
-    // return this.http.post<{message:string}>('http://localhost:5000/parcels/add',order)
+
+  deleteParcel(parcel_id: number): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`${this.baseUrl}/deleteparcel/${parcel_id}`)
   }
 
-
-
-
-  registerUser(user:IUser):Observable <{message:string}>{
-    return this.http.post<{message:string}>('http://localhost:5000/users/register',user)
+  createParcel(parcel: IParcel): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(`${this.baseUrl}/add`, parcel)
   }
-  login(email:string,password:string){
+
+  registerUser(user: IUser): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>('http://localhost:5000/users/register', user)
+  }
+  login(email: string, password: string) {
     this.checkUser()
-    return this.http.post<IUser>('http://localhost:5000/users/login',{email,password})
+    return this.http.post<IUser>('http://localhost:5000/users/login', { email, password })
 
 
 
   }
-  checkUser(){
+  checkUser() {
     let token = localStorage.getItem('token') as string
-    return this.http.get<Irole>('http://localhost:5000/users/check',{
-      headers:new HttpHeaders({
-        'token':token
+    return this.http.get<Irole>('http://localhost:5000/users/check', {
+      headers: new HttpHeaders({
+        'token': token
       })
-    }).pipe(map((res)=>{
-      localStorage.setItem('email',res.email)
-      localStorage.setItem('role',res.role)
+    }).pipe(map((res) => {
+      localStorage.setItem('email', res.email)
+      localStorage.setItem('role', res.role)
       return res.role
     }))
   }

@@ -22,10 +22,10 @@ const db_1 = __importDefault(require("../DatabaseHelpers/db"));
 const db = new db_1.default();
 const SendDispatch = () => __awaiter(void 0, void 0, void 0, function* () {
     const pool = yield mssql_1.default.connect(Config_1.sqlConfig);
-    // const parcels:Parcel[]= await (await db.exec("dispatchEmail")).recordset
-    const parcels = yield (yield pool.request().query(`
-// SELECT * FROM PARCELS WHERE is_sent='no' AND parcel_id=@parcel_id`)).recordset;
-    // console.log("disparct...");
+    const parcels = yield (yield db.exec("dispatchEmail")).recordset;
+    // const parcels:Parcel[]= await(await pool.request().query(`
+    //  SELECT * FROM PARCELS WHERE is_sent='no' `)).recordset
+    // console.log("dispatched...");
     console.log(parcels);
     for (let parcel of parcels) {
         console.log(parcel);
@@ -44,9 +44,9 @@ const SendDispatch = () => __awaiter(void 0, void 0, void 0, function* () {
             };
             try {
                 yield (0, Email_1.default)(messageoption);
-                yield db.exec('updateDispatchEmail', { parcel_id: parcel.parcel_id });
-                // await pool.request().query(`UPDATE PARCELS SET is_sent='yes' WHERE parcel_id=@parcel_id `)
-                console.log('Dispatch email is sent...');
+                yield db.exec('receiverDispatched', { parcel_id: parcel.parcel_id });
+                // await pool.request().query(`UPDATE PARCELS SET is_sent='yes'`)
+                // console.log('Dispatch email is sent...');
             }
             catch (error) {
                 console.log(error);

@@ -33,7 +33,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     HttpClientModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({name:'Order',maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({name:'Parcel',maxAge: 25, logOnly: environment.production }),
     SharedModule,
     GoogleMapsModule
 

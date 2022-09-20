@@ -4,8 +4,8 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-    "username":"Daniel",
-    "email": "kakinyidk@gmail.com",
+    "username":"Judy",
+    "email": "wambuijuddie065@gmail.com",
     "password": "12345678"
 }
 
@@ -16,7 +16,7 @@ Content-Type: application/json
 {
     
     "email":"gamesmy177@gmail.com",
-    "password":"1234567"  
+    "password":"12345678"  
 }
 ###
 GET http://localhost:5000/users/check
@@ -36,14 +36,14 @@ POST http://localhost:5000/parcels/add
 Content-Type: application/json
 
 {
-    "senderemail":"dan@gmail.com",
-    "receiveremail": "mercy@gmail.com",
+    "senderemail":"wambuijuddie065@gmail.com",
+    "receiveremail": "lxwaihenya@gmail.com",
     "parcel_desc":"fragile",
     "fromLoc": "Othaya",
     "toLoc":"Nairobi",
     "status":"dispatched",
-    "weight":"60",
-    "price":"9000"
+    "weight":60,
+    "price":9000
     
 }
 
@@ -52,55 +52,33 @@ GET http://localhost:5000/parcels/all
 Content-Type: application/json
 
 ### deleting parcel
-DELETE  http://localhost:5000/parcels/deleteparcel/3076
+DELETE  http://localhost:5000/parcels/deleteparcel/3086
 Content-Type: application/json
 
 ### update when parcel is sent
-PUT  http://localhost:5000/parcels/sent/3078
+PUT  http://localhost:5000/parcels/sent/3086
 Content-Type: application/json
-
-{
-    "senderemail":"justus@gmail.com",
-    "receiveremail": "morris@gmail.com",
-    "parcel_desc":"fragile",
-    "fromLoc": "Othaya",
-    "toLoc":"Nairobi",
-    "status":"dispatched",
-    "weight":"60",
-    "price":"800"
-
-}
 
 ### update when parcel is delievered
 
-PUT  http://localhost:5000/parcels/delivered/3077
+PUT  http://localhost:5000/parcels/delivered/3083
 Content-Type: application/json
 
-{
-    "senderemail":"justus@gmail.com",
-    "receiveremail": "morris@gmail.com",
-    "parcel_desc":"fragile",
-    "fromLoc": "Othaya",
-    "toLoc":"Nairobi",
-    "status":"dispatched",
-    "weight":"60",
-    "price":"800"
-
-}
 
 ### updating parcel
-PUT  http://localhost:5000/parcels/update/3078
+PUT  http://localhost:5000/parcels/update/3086
 Content-Type: application/json
+token:
 
 {
-    "senderemail":"muthonijustus@gmail.com",
-    "receiveremail": "irungumorris@gmail.com",
+    "senderemail":"dankinyi@gmail.com",
+    "receiveremail": "jonathanndambuki16@gmail.com",
     "parcel_desc":"fragile",
     "fromLoc": "Othaya",
     "toLoc":"Nairobi",
     "status":"dispatched",
-    "weight":"60",
-    "price":"9000"
+    "weight":60,
+    "price":9000
     
 }
 

@@ -22,18 +22,19 @@ export const register = async (req: userCustom, res: Response) => {
 
         const { username, email, password } = req.body;
         const { error, value } = registerSchema.validate(req.body)
+        const hashedPassword = await bcrypt.hash(password, 10)
+        if (error) {
+            return res.json({ error: error.details[0].message })
+        }
   
-        const results = (await db.exec('getUser',{email})).recordset
+        const results = (await db.exec('getOneUser',{email})).recordset
         if(results.length>0){
             return res.status(401).json({
                 message: "username or email already taken,try a different..."
             })
 
         }
-        const hashedPassword = await bcrypt.hash(password, 10)
-        if (error) {
-            return res.json({ error: error.details[0].message })
-        }
+        
         db.exec("registerUser",{
             username, 
             email, 

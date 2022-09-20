@@ -12,11 +12,15 @@ const app= express()
 const run =()=>{
 cron.schedule('*/5 * * * * *', async() => {
   console.log('running a 5 seconds');
-  // await SendEmails()
+  await SendEmails()
+  await SendDispatch()
   await SendDelivery()
-  // await SendDispatch()
+ 
   
 })
+
+
+
 }
 run()
 

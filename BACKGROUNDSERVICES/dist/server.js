@@ -14,14 +14,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const node_cron_1 = __importDefault(require("node-cron"));
+const EmailService_1 = __importDefault(require("./EmailService/EmailService"));
 const DeliveryService_1 = __importDefault(require("./EmailService/DeliveryService"));
+const DispatchService_1 = __importDefault(require("./EmailService/DispatchService"));
 const app = (0, express_1.default)();
 const run = () => {
     node_cron_1.default.schedule('*/5 * * * * *', () => __awaiter(void 0, void 0, void 0, function* () {
         console.log('running a 5 seconds');
-        // await SendEmails()
+        yield (0, EmailService_1.default)();
+        yield (0, DispatchService_1.default)();
         yield (0, DeliveryService_1.default)();
-        // await SendDispatch()
     }));
 };
 run();
