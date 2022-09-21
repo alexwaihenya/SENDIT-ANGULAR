@@ -17,12 +17,12 @@
       <div class="form-control">
         <label for="email">EMAIL</label>
         <input type="email" required formControlName="email" />
-        <span class="error" *ngIf="!form.get('email')!.valid && form.get('email')!.touched">*please enter a valid email</span>
+        <p class="error" *ngIf="!form.get('email')!.valid && form.get('email')!.touched">*please enter a valid email</p>
       </div>
       <div class="form-control">
         <label for="password">PASSWORD</label>
         <input type="password" required formControlName="password" />
-        <span class="error" *ngIf="!form.get('password')!.valid && form.get('password')!.touched">*please enter a valid password</span>
+        <p class="error" *ngIf="!form.get('password')!.valid && form.get('password')!.touched">*please enter a valid password</p>
       </div>
 
       <button type="submit"  [disabled]="!form.valid">SIGN UP</button>

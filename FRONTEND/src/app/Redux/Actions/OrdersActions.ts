@@ -28,7 +28,7 @@ export const AddParcelFailure = createAction(
 
 export const UpdateParcel = createAction(
   'UpdateParcel',
-  props<{updateParcel:IParcel}>()
+  props<{parcel_id: number,updateparcel:IParcel}>()
 );
 export const UpdateParcelSuccess = createAction(
   'UpdateParcelSuccess',
@@ -37,7 +37,22 @@ export const UpdateParcelSuccess = createAction(
 export const UpdateParcelFailure = createAction(
   'UpdateParcelFailure',
   props<{error:string}>()
-)
+);
+
+export const UpdateParcelStatus = createAction(
+  'UpdateParcelStatus',
+  props<{parcel_id: number,updateParcelStatus:IParcel}>()
+);
+export const UpdateParcelStatusSuccess = createAction(
+  'UpdateParcelStatusSuccess',
+  props<{updateStatusMessage:string}>()
+);
+export const UpdateParcelStatusFailure = createAction(
+  'UpdateParcelStatusFailure',
+  props<{error:string}>()
+);
+
+
 
 export const DeleteParcel = createAction(
   'DeleteParcel',

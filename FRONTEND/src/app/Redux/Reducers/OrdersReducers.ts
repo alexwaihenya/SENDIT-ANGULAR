@@ -44,6 +44,10 @@ export const getParcel = createSelector(
   (state, parcelid) =>
     state.parcels.find((parcel) => parcel.parcel_id === parcelid)
 );
+export const updateParcel = createSelector(
+  getParcelFeatureState,
+  state=>state.updateMessage
+)
 
 export const ParcelReducer = createReducer(
   initialState,
@@ -71,6 +75,14 @@ export const ParcelReducer = createReducer(
   on(Actions.UpdateParcelFailure,(state,action):ParcelState=>{
     return {...state,error:action.error}
   }),
+
+  on(Actions.UpdateParcelStatusSuccess,(state,action):ParcelState=>{
+    return {...state,updateMessage:action.updateStatusMessage};
+  }),
+  on(Actions.UpdateParcelStatusFailure,(state,action):ParcelState=>{
+    return {...state,error:action.error}
+  }),
+
 
   on(Actions.DeleteParcelSuccess, (state, action): ParcelState => {
     return { ...state, deleteMessage: action.deletemessage };

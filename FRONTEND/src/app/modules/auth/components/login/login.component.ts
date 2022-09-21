@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
 
     } else if (role == 'admin') {
 
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/admin/all-orders']);
 
       localStorage.setItem('isLoggedIn', 'true')
     }

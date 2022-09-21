@@ -62,4 +62,40 @@ export class OrderEffectsService {
       )
     );
   });
+
+  updateParcel = createEffect(() => {
+    return this.actions.pipe(
+      ofType(OrdersActions.UpdateParcel),
+      mergeMap((action) =>
+        this.parcelService.updateParcel(action.parcel_id,action.updateparcel).pipe(
+          tap((res) => this.store.dispatch(OrdersActions.LoadParcels())),
+          map((res) =>
+            OrdersActions.UpdateParcelSuccess( {updateMessage:res.message})
+          ),
+          catchError((error) =>
+            of(OrdersActions.UpdateParcelFailure({ error: error.message }))
+          )
+        )
+      )
+    );
+  });
+
+  updateParcelStatus = createEffect(() => {
+    return this.actions.pipe(
+      ofType(OrdersActions.UpdateParcelStatus),
+      mergeMap((action) =>
+        this.parcelService.updateParcelSatus(action.parcel_id,action.updateParcelStatus).pipe(
+          tap((res) => this.store.dispatch(OrdersActions.LoadParcels())),
+          map((res) =>
+            OrdersActions.UpdateParcelStatusSuccess( {updateStatusMessage:res.message})
+          ),
+          catchError((error) =>
+            of(OrdersActions.UpdateParcelFailure({ error: error.message }))
+          )
+        )
+      )
+    );
+  });
+
+
 }

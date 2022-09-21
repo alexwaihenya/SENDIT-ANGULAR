@@ -28,6 +28,14 @@ export class ApiUserService {
   createParcel(parcel: IParcel): Observable<{ message: string }> {
     return this.http.post<{ message: string }>(`${this.baseUrl}/add`, parcel)
   }
+  updateParcel(parcel_id:number,parcel:IParcel):Observable<{message:string}>{
+    return this.http.put<{ message: string }>(`${this.baseUrl}/update/${parcel_id}`,parcel)
+  }
+  updateParcelSatus(parcel_id:number,parcel:IParcel):Observable<{message:string}>{
+    return this.http.put<{ message: string }>(`${this.baseUrl}/sent/${parcel_id}`,parcel)
+  }
+
+  
 
   registerUser(user: IUser): Observable<{ message: string }> {
     return this.http.post<{ message: string }>('http://localhost:5000/users/register', user)

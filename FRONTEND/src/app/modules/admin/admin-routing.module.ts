@@ -17,7 +17,7 @@ const routes: Routes = [
     {path:'dispatched-orders',component:DispatchedOrdersComponent},
     {path:'new-parcel-order',component:NewParcelOrderComponent},
     {path:'clients',component:ClientsComponent},
-    {path:'edit',component:EditComponent}
+    {path:'edit/:id',component:EditComponent}
   
   ]},
  

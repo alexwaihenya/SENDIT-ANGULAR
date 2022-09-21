@@ -29,7 +29,7 @@ export class AllOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((param) => {
-      this.parcel_id = +param['id'];
+      this.parcel_id = +param['parcel_id'];
     });
     this.store.dispatch(Actions.SelectedId({ id: this.parcel_id }));
     this.getAll();
@@ -59,7 +59,7 @@ export class AllOrdersComponent implements OnInit {
   updateParcel(parcel_id: number) {
     this.store.dispatch(Actions.SelectedId({ id: parcel_id }));
 
-    this.router.navigate(["/admin/edit"])
+    this.router.navigate([`/admin/edit/${parcel_id}`])
   }
 
 

@@ -1,8 +1,11 @@
 <div class="container">
     <div class="parcelform">
       <h3>UPDATE PARCEL ORDER</h3>
+      <!-- *ngIf="emails$ | async as emails" -->
   
-      <form [formGroup]="updateparcelform" (ngSubmit)="updateParcel()">
+      <form [formGroup]="updateparcelform" (ngSubmit)="updateParcel()" >
+        <!-- <p *ngIf="error"  style="background-color: red"></p> -->
+        <!-- <p *ngIf="noerror"  style="background-color: rgb(17, 245, 17)">parcel updated successfully!!!</p> -->
         <div class="form-control">
           <label for="receiveremail">SENDER EMAIL</label>
           <select formControlName="senderemail">
