@@ -29,9 +29,9 @@ export class AllOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((param) => {
-      this.parcel_id = +param['parcel_id'];
+      this.parcel_id = +param['id'];
     });
-    this.store.dispatch(Actions.SelectedId({ id: this.parcel_id }));
+
     this.getAll();
     
 

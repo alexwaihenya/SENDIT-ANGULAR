@@ -1,20 +1,16 @@
 <!-- <p>incoming-parcels works!</p> -->
-<table border="" >
-    <tr>
-      <th>sender name</th>
-      <th>parcel desc</th>
-      <th>from</th>
-      <th>delivery_date</th>
-      <th>action</th>
-    </tr>
+<table border="">
+  <tr>
+    <th>sender name</th>
+    <th>parcel desc</th>
+    <th>from</th>
+    <th>action</th>
+  </tr>
 
-    <tr>
-      <td>Alex</td>
-      <td>docs</td>
-      <td>nairobi</td>
-      <td>22/09/2022</td>
-      <td><button>view</button></td>
-    
-    </tr>
-
-  </table>
+  <tr *ngFor="let parcel of receivedParcels">
+    <td>{{ parcel.senderemail }}</td>
+    <td>{{ parcel.parcel_desc }}</td>
+    <td>{{ parcel.fromLoc }}</td>
+    <td><button>view</button></td>
+  </tr>
+</table>

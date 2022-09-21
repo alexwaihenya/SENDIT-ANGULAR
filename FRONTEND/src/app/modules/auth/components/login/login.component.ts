@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     // this.store.dispatch(Actions.login({userCredentials}))
     this.apiService.login(userCredentials).subscribe(res => {
     localStorage.setItem("token",res.token)
+    localStorage.setItem("email",userCredentials.email)
       this.checkRole()
     })
     setTimeout(() => {

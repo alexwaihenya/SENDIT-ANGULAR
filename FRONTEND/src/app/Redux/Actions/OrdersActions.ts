@@ -28,7 +28,7 @@ export const AddParcelFailure = createAction(
 
 export const UpdateParcel = createAction(
   'UpdateParcel',
-  props<{parcel_id: number,updateparcel:IParcel}>()
+  props<{parcel_id:number,updateparcel:IParcel}>()
 );
 export const UpdateParcelSuccess = createAction(
   'UpdateParcelSuccess',

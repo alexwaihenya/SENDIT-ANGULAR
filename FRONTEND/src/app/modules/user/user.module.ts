@@ -5,6 +5,10 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { IncomingParcelsComponent } from './components/incoming-parcels/incoming-parcels.component';
 import { OutgoingParcelsComponent } from './components/outgoing-parcels/outgoing-parcels.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { OrderEffectsService } from 'src/app/Redux/Effects/OrdersEffects';
+import { ParcelReducer } from 'src/app/Redux/Reducers/OrdersReducers';
 
 
 @NgModule({
@@ -15,7 +19,9 @@ import { OutgoingParcelsComponent } from './components/outgoing-parcels/outgoing
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    StoreModule.forFeature('parcel',ParcelReducer),
+    EffectsModule.forFeature([OrderEffectsService])
   ]
 })
 export class UserModule { }
