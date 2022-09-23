@@ -7,9 +7,9 @@
             <p>PARCEL ID:{{parcel.parcel_id}}</p>
             <p>SENDER EMAIL:{{parcel.senderemail}}</p>
             <p>RECEIVER EMAIL:{{parcel.receiveremail}}</p>
-            <p>FROM:{{parcel.fromLoc}}</p>
-            <p>TO:{{parcel.toLoc}}</p>
-            <P>PARCEL DESC:{{parcel.parcel_desc}}</P>
+            <p>FROM:{{parcel.fromLoc | slice:0:15}}</p>
+            <p>TO:{{parcel.toLoc | slice:0:15}}</p>
+            <P>PARCEL DETAILS:{{parcel.parcel_desc}}</P>
             <p>WEIGHT:{{parcel.weight}}</p>
           </div>
 

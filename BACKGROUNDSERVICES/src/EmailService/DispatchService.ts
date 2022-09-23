@@ -33,7 +33,7 @@ const SendDispatch = async () => {
     //  SELECT * FROM PARCELS WHERE is_sent='no' `)).recordset
     // console.log("dispatched...");
 
-    console.log(parcels);
+    // console.log(parcels);
 
 
     for (let parcel of parcels) {

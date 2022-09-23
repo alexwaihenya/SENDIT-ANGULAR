@@ -8,6 +8,7 @@ const routes: Routes = [
   {path:'user-dashboard',component:UserDashboardComponent,children:[
     {path:'incoming',component:IncomingParcelsComponent},
     {path:'outgoing',component:OutgoingParcelsComponent},
+    
   ]}
 ];
 

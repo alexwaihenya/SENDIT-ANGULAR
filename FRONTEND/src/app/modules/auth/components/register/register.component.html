@@ -26,7 +26,7 @@
         <p class="error" *ngIf="!form.get('password')!.valid && form.get('password')!.touched">*password must be atleast 8 characters Long</p>
       </div>
 
-      <button type="submit"  [disabled]="form.valid">SIGN UP</button>
+      <button type="submit"  [disabled]="!form.valid">SIGN UP</button>
     </form>
   </div>
 </div>

@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import {sqlConfig} from '../Config/Config'
 dotenv.config()
 import sendMail from '../Helpers/Email'
+import Connection from '../DatabaseHelpers/db'
 interface Parcel{
     parcel_id:number, 
     senderemail:string
@@ -17,12 +18,13 @@ interface Parcel{
     weight:number
     price:number
 }
-
+const db = new Connection()
 
 const SendDelivery = async()=>{
 const pool = await mssql.connect(sqlConfig)
-const parcels:Parcel[]= await(await pool.request().query(`
-SELECT * FROM PARCELS WHERE is_delivered='no' AND parcel_id=@parcel_id`)).recordset
+// const parcels:Parcel[]= await(await pool.request().query(`
+// SELECT * FROM PARCELS WHERE is_delivered='no' AND parcel_id=@parcel_id`)).recordset
+const parcels: Parcel[] = await (await db.exec("updateDelivered")).recordset
 console.log(parcels);
 
 

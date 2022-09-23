@@ -45,7 +45,6 @@ Content-Type: application/json
     "toLoc":"Nairobi",
     "toLat":89,
     "toLong":90,
-    "status":"dispatched",
     "weight":60,
     "price":9000
     
@@ -65,7 +64,7 @@ Content-Type: application/json
 
 ### update when parcel is delievered
 
-PUT  http://localhost:5000/parcels/delivered/2
+PUT  http://localhost:5000/parcels/delivered/4
 Content-Type: application/json
 
 
@@ -75,11 +74,15 @@ Content-Type: application/json
 token:
 
 {
-    "senderemail":"dankinyi@gmail.com",
-    "receiveremail": "jonathanndambuki16@gmail.com",
+    "senderemail":"wambuijuddie065@gmail.com",
+    "receiveremail": "lxwaihenya@gmail.com",
     "parcel_desc":"fragile",
     "fromLoc": "Othaya",
+    "fromLat":56,
+    "fromLong":98,
     "toLoc":"Nairobi",
+    "toLat":89,
+    "toLong":90,
     "status":"dispatched",
     "weight":60,
     "price":9000

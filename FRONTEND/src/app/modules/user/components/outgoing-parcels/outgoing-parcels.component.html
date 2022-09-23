@@ -26,8 +26,8 @@
       >
       <td>{{ parcel.senderemail }}</td>
       <td>{{ parcel.parcel_desc }}</td>
-      <td>{{ parcel.fromLoc }}</td>
-      <td><button>view</button></td>
+      <td>{{ parcel.fromLoc | slice:0:15}}</td>
+      <td><button >view</button></td>
       
       </tr>
     </tbody>
