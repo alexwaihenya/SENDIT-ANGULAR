@@ -1,6 +1,7 @@
 table {
-    border-collapse: collapse;
-    width: 100%;
+  margin-top: 16px;
+  border-collapse: collapse;
+  width: 100%;
   }
   
   th, td {
@@ -9,4 +10,18 @@ table {
     border-bottom: 1px solid #ddd;
   }
   
-  tr:hover {background-color:#2723EE;}
+  tr:hover {background-color:white;}
+
+  input{
+    width: 350px;
+    border-radius: 7px;
+    padding: 8px;
+  }
+
+  .container{
+    background-color:#D9D9D9 ;
+    height: 80.5vh;
+    position: absolute;
+    width: 75vw;
+  
+}

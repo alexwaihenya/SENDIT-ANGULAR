@@ -40,7 +40,11 @@ Content-Type: application/json
     "receiveremail": "lxwaihenya@gmail.com",
     "parcel_desc":"fragile",
     "fromLoc": "Othaya",
+    "fromLat":56,
+    "fromLong":98,
     "toLoc":"Nairobi",
+    "toLat":89,
+    "toLong":90,
     "status":"dispatched",
     "weight":60,
     "price":9000
@@ -56,12 +60,12 @@ DELETE  http://localhost:5000/parcels/deleteparcel/3086
 Content-Type: application/json
 
 ### update when parcel is sent
-PUT  http://localhost:5000/parcels/sent/3086
+PUT  http://localhost:5000/parcels/sent/2
 Content-Type: application/json
 
 ### update when parcel is delievered
 
-PUT  http://localhost:5000/parcels/delivered/3083
+PUT  http://localhost:5000/parcels/delivered/2
 Content-Type: application/json
 
 

@@ -24,8 +24,12 @@ export interface IParcel {
   senderemail: string;
   receiveremail: string;
   parcel_desc: string;
-  fromLoc: Location;
-  toLoc: Location;
+  fromLoc: string;
+  fromLat:number;
+  fromLong:number;
+  toLoc: string;
+  toLat:number;
+  toLong:number;
   status: string;
   dispatch_date: string;
   delivery_date: string;
@@ -33,8 +37,8 @@ export interface IParcel {
   price: number;
 }
 
-export interface Location {
-  address: string;
-  latitute?: number;
-  longitude?: number;
-}
+// export interface Location {
+//   address: string;
+//   latitute?: number;
+//   longitude?: number;
+// }

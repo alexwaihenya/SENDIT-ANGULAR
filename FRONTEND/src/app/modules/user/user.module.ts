@@ -9,6 +9,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { OrderEffectsService } from 'src/app/Redux/Effects/OrdersEffects';
 import { ParcelReducer } from 'src/app/Redux/Reducers/OrdersReducers';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { ParcelReducer } from 'src/app/Redux/Reducers/OrdersReducers';
   imports: [
     CommonModule,
     UserRoutingModule,
+    NgxPaginationModule,
+    FormsModule,
     StoreModule.forFeature('parcel',ParcelReducer),
     EffectsModule.forFeature([OrderEffectsService])
   ]

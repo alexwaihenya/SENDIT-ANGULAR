@@ -3,64 +3,74 @@
     <h3>CREATE PARCEL ORDER</h3>
 
     <form [formGroup]="parcelform" (ngSubmit)="addParcel()">
+      <p *ngIf="missing" style="background-color: red"></p>
+      <p *ngIf="filled" style="color: rgb(14, 221, 14)">
+        parcel created successfully
+      </p>
       <div class="form-control">
-        <label for="receiveremail">SENDER EMAIL</label>
+        <label for="senderemail">SENDER EMAIL</label>
         <select formControlName="senderemail">
-          <option value="gamesmy177@gmail.com">gamesmy177@gmail.com</option>
-          <option value="jonathanndambuki16@gmail.com">jonathanndambuki16@gmail.com</option>
-          <option value="lxwaihenya@gmail.com">lxwaihenya@gmail.com</option>
+          <option selected>select receiver</option>
+          <option *ngFor="let email of emails" >{{email.email}}</option>
         </select>
       </div>
-   
+
       <div class="form-control">
         <label for="receiveremail">RECEIVER EMAIL</label>
         <select formControlName="receiveremail">
-          <option value="lxwaihenya@gmail.com">lxwaihenya@gmail.com</option>
-          <option value="kakinyidk@gmail.com">kakinyidk@gmail.com</option>
-          <option value="jonathanndambuki16@gmail.com">jonathanndambuki16@gmail.com</option>
+          <option selected>select receiver</option>
+          <option *ngFor="let email of emails" >{{email.email}}</option>
         </select>
       </div>
-   
+
       <div class="form-control">
         <label for="parcel_desc">PARCEL DESCRIPTION</label>
         <input type="text" required formControlName="parcel_desc" />
-        
       </div>
       <div class="form-control">
         <label for="from">FROM</label>
-        <input type="text" required formControlName="fromLoc" />
+        <input
+          formControlName="fromLoc"
+          ngx-google-places-autocomplete
+          (onAddressChange)="OnAddressChangeSender($event)"
+        />
       </div>
       <div class="form-control">
         <label for="to">TO</label>
-        <input type="text" required formControlName="toLoc" />
+        <input
+          formControlName="toLoc"
+          ngx-google-places-autocomplete
+          (onAddressChange)="OnAddressChangeReceiver($event)"
+        />
       </div>
-   
-      <div class="form-control">
+
+      <!-- <div class="form-control">
         <label for="dispatch_date">DISPATCH DATE</label>
         <input type="date" required formControlName="dispatch_date" />
       </div>
       <div class="form-control">
         <label for="delivery_date">DELIVERY DATE</label>
         <input type="date" required formControlName="delivery_date" />
-      </div>
+      </div> -->
       <div class="form-control">
         <label for="status">STATUS</label>
         <select formControlName="status">
           <option value="dispatched">Dispatched</option>
           <option value="delivered">Delivered</option>
         </select>
-        
       </div>
       <div class="form-control">
         <label for="weight">WEIGHT</label>
-        <input type="number" required formControlName="weight" min=0 />
+        <input type="number" required formControlName="weight" min="0" />
       </div>
       <div class="form-control">
         <label for="price">PRICE</label>
-        <input type="number" required formControlName="price" min=0 />
+        <input type="number" required formControlName="price" min="0" />
       </div>
 
-      <button [disabled]="!parcelform.valid" type="submit">CREATE PARCEL</button>
+      <button [disabled]="!parcelform.valid" type="submit">
+        CREATE PARCEL
+      </button>
     </form>
   </div>
 </div>

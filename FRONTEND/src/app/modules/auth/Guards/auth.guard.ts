@@ -12,10 +12,11 @@ export class AuthGuard implements CanActivate {
 
    
 
-    if(this.authService.isLoggedIn()){
+    if(this.authService.isLoggedIn() && localStorage.getItem('role')==='admin'){
       return true
     }
     else{
+      this.router.navigate(['/login'])
       return false
     }
   }

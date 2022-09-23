@@ -1,11 +1,14 @@
-CREATE PROCEDURE INSERTUPDATE(
-
-    
+ALTER PROCEDURE INSERTUPDATE(
+	
     @senderemail VARCHAR(200), 
     @receiveremail VARCHAR(200),
-    @parcel_desc VARCHAR(200)
+    @parcel_desc VARCHAR(200),
     @fromLoc VARCHAR(200) ,
+	@fromLat INT,
+	@fromLong INT,
     @toLoc VARCHAR(200),
+	@toLat INT,
+	@toLong INT,
     @status VARCHAR(200),
     @weight INT, 
     @price INT
@@ -20,7 +23,11 @@ INSERT INTO PARCELS
 receiveremail,
 parcel_desc,
 fromLoc,
+fromLat,
+fromLong,
 toLoc,
+toLat,
+toLong,
 status,
 weight,
 price)
@@ -29,7 +36,11 @@ VALUES(
 	@receiveremail,
 	@parcel_desc,
 	@fromLoc,
+	@fromLat,
+	@fromLong,
 	@toLoc,
+	@toLat,
+	@toLong,
 	@status,
 	@weight,
 	@price)

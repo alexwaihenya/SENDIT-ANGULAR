@@ -9,8 +9,11 @@ export interface parcelCustom extends Request{
         receiveremail:string
         parcel_desc:string,
         fromLoc:string
+        fromLat:number
+        fromLong:number
         toLoc:string
-        // delivery_date:string
+        toLat:number
+        toLong:number
         status:string
         weight:number
         price:number

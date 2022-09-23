@@ -61,6 +61,12 @@ export class AllOrdersComponent implements OnInit {
 
     this.router.navigate([`/admin/edit/${parcel_id}`])
   }
+   
+  viewParcel(parcel_id: number) {
+    this.store.dispatch(Actions.SelectedId({ id: parcel_id }));
+
+    this.router.navigate([`/admin/view-parcel/${parcel_id}`])
+  }
 
 
 

@@ -1,24 +1,53 @@
-
-<div class="container" >
-  <div class="login" >
+<div class="container">
+  <div class="login">
     <h3>WELCOME</h3>
+    <!-- <p style="color: green;" *ngIf="created">Loggedin successfully</p><br> -->
+    <!-- <p *ngIf="untouched" style="color:red">All fields must be filled</p> -->
     <div class="logo-a">A</div>
-    <p *ngIf="error">{{error}}</p>
-
     <form #form="ngForm" (ngSubmit)="LogIn(form.value)">
       <div class="form-control">
         <label for="email">Email</label>
-        <input type="email" name="email" ngModel email #email="ngModel" required />
+        <input
+          type="email"
+          name="email"
+          ngModel
+          email
+          #email="ngModel"
+          required
+          placeholder="Email"
+        />
       </div>
-      <span class="error" *ngIf="!email.valid && email.touched">
-        *Please enter a valid email!
-      </span>
-
+      <div class="error" *ngIf="!email.valid && (email.dirty || email.touched)">
+        <p *ngIf="email.errors?.['required']" style="color: red">
+          *Please enter a valid email!
+        </p>
+      </div>
       <div class="form-control">
         <label for="password">Password</label>
-        <input type="password" name="password" ngModel required />
+        <input
+          type="password"
+          minlength="8"
+          name="password"
+          ngModel
+          #password="ngModel"
+          required
+          placeholder="Password"
+        />
       </div>
-
+      <div *ngIf="password.invalid && (password.dirty || password.touched)">
+        <p
+          *ngIf="password.errors?.['required']"
+          style="color: rgb(255, 0, 0)"
+        >
+          Password is required.
+        </p>
+        <div *ngIf="password.errors?.['minlength']" style="color: red">
+          At least 8 characters long.
+        </div>
+        <span *ngIf="password.errors?.['serverError']">
+          {{password.errors?.['serverError']}}
+        </span>
+      </div>
       <button type="submit" [disabled]="!form.valid">LOGIN</button>
     </form>
   </div>

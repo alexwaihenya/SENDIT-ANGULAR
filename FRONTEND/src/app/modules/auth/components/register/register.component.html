@@ -3,7 +3,8 @@
   <div class="register">
     <h2>REGISTER</h2>
     <div>
-      <!-- <p style="color: green;" ngIf=filled>Project created successfully</p><br> -->
+      <p style="color: green;" *ngIf="created">Account created successfully</p><br>
+      <p *ngIf="untouched" style="color:red">All fields must be filled</p>
       <h4>Hello there!!!</h4>
       <p>You need an account to continue</p>
     </div>
@@ -22,10 +23,10 @@
       <div class="form-control">
         <label for="password">PASSWORD</label>
         <input type="password" required formControlName="password" />
-        <p class="error" *ngIf="!form.get('password')!.valid && form.get('password')!.touched">*please enter a valid password</p>
+        <p class="error" *ngIf="!form.get('password')!.valid && form.get('password')!.touched">*password must be atleast 8 characters Long</p>
       </div>
 
-      <button type="submit"  [disabled]="!form.valid">SIGN UP</button>
+      <button type="submit"  [disabled]="form.valid">SIGN UP</button>
     </form>
   </div>
 </div>

@@ -60,4 +60,10 @@ export class ApiUserService {
     }))
   }
 
+  getUsers(): Observable<IUser[]> {
+    return this.http.get<IUser[]>('http://localhost:5000/users/all')
+  }
+
+
+
 }

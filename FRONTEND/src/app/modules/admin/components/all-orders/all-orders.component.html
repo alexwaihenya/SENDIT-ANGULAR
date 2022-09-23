@@ -22,7 +22,7 @@
         <tr
           *ngFor="
             let parcel of parcels
-              | paginate: { itemsPerPage: 6, currentPage: p }
+              | paginate: { itemsPerPage: 4, currentPage: p }
           "
         >
           <td>{{ parcel.parcel_id }}</td>
@@ -32,18 +32,22 @@
           <td>{{ parcel.toLoc }}</td>
           <td>{{ parcel.status }}</td>
           <td>
-            <button  (click)="updateParcel(parcel.parcel_id)">Edit</button>
-            <!-- <i
+            
+            <!-- <button  (click)="updateParcel(parcel.parcel_id)">Edit</button> -->
+            <i class="fa-solid fa-eye"
+            (click)="viewParcel(parcel.parcel_id)"
+            ></i>
+            <i
               class="fa-solid fa-pen-nib"
               (click)="updateParcel(parcel.parcel_id)"
-            ></i> -->
+            ></i>
           </td>
           <td>
-            <button (click)="deleteParcel(parcel.parcel_id)">delete</button>
-            <!-- <i
+            <!-- <button (click)="deleteParcel(parcel.parcel_id)">delete</button> -->
+            <i
               class="fa-solid fa-trash"
               (click)="deleteParcel(parcel.parcel_id)"
-            ></i> -->
+            ></i>
           </td>
         </tr>
       </tbody>

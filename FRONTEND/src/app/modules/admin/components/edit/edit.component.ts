@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IParcel } from 'src/app/intefaces';
+import { IUser } from 'src/app/intefaces/user';
+import { ApiUserService } from 'src/app/modules/auth/services/api.user.service';
 import {
   getParcel,
-  getParcels,
   ParcelState,
-  updateParcel,
 } from 'src/app/Redux/Reducers/OrdersReducers';
 import * as Actions from '../../../../Redux/Actions/OrdersActions';
 
@@ -21,11 +21,14 @@ export class EditComponent implements OnInit {
   parcel!: IParcel;
   parcel_id!: number;
 
+  emails! : IUser[]
+
   constructor(
     private fb: FormBuilder,
     private store: Store<ParcelState>,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService:ApiUserService
   ) {}
 
   ngOnInit(): void {
@@ -60,9 +63,13 @@ export class EditComponent implements OnInit {
         receiveremail: [parcel?.receiveremail, [Validators.required]],
         parcel_desc: [parcel?.parcel_desc, [Validators.required]],
         fromLoc: [parcel?.fromLoc, [Validators.required]],
+        fromLat: [parcel?.fromLat, [Validators.required]],
+        fromLong: [parcel?.fromLong, [Validators.required]],
         toLoc: [parcel?.toLoc, [Validators.required]],
-        dispatch_date: [parcel?.dispatch_date, [Validators.required]],
-        delivery_date: [parcel?.delivery_date, [Validators.required]],
+        toLat: [parcel?.toLat, [Validators.required]],
+        toLong: [parcel?.toLong, [Validators.required]],
+        // dispatch_date: [parcel?.dispatch_date, [Validators.required]],
+        // delivery_date: [parcel?.delivery_date, [Validators.required]],
         status: [parcel?.status, [Validators.required]],
         weight: [parcel?.weight, [Validators.required]],
         price: [parcel?.price, [Validators.required]],
@@ -70,6 +77,12 @@ export class EditComponent implements OnInit {
       this.updateparcelform.get('weight')?.valueChanges.subscribe((res) => {
         this.updateparcelform.get('price')!.setValue(res * 50);
       });
+
+
+      this.userService.getUsers().subscribe((users)=>{
+        this.emails = users
+  
+      })
       // console.log(parcel);
 
       // if (parcel) {
@@ -91,8 +104,7 @@ export class EditComponent implements OnInit {
 
   updateParcel() {
 
-    // const update:IParcel = {...this.updateparcelform.value,parcel_id:this.parcel_id}
-    // console.log(update);
+  
 
     this.store.dispatch(
       Actions.UpdateParcel({
@@ -104,4 +116,6 @@ export class EditComponent implements OnInit {
     this.store.dispatch(Actions.LoadParcels());
     this.router.navigate(['/admin/all-orders']);
   }
+
+  
 }

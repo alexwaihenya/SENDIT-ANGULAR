@@ -6,6 +6,12 @@
   
 }
 
+input{
+  width: 350px;
+  border-radius: 7px;
+  padding: 8px;
+}
+
   table {
     border-collapse: collapse;
     width: 100%;

@@ -15,6 +15,9 @@ export class OutgoingParcelsComponent implements OnInit {
   email!: string;
   parcels$ = this.store.select(getParcels);
 
+  p:number = 1
+  filter=''
+
 
   constructor(
     private router: Router,

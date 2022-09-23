@@ -1,16 +1,41 @@
-<!-- <p>incoming-parcels works!</p> -->
-<table border="">
-  <tr>
-    <th>sender name</th>
-    <th>parcel desc</th>
-    <th>from</th>
-    <th>action</th>
-  </tr>
 
-  <tr *ngFor="let parcel of receivedParcels">
-    <td>{{ parcel.senderemail }}</td>
-    <td>{{ parcel.parcel_desc }}</td>
-    <td>{{ parcel.fromLoc }}</td>
-    <td><button>view</button></td>
-  </tr>
-</table>
+
+<div class="container">
+  <div class="search">
+    <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+    <input type="text" placeholder="search..." [(ngModel)]="filter" />
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>sender name</th>
+        <th>parcel desc</th>
+        <th>from</th>
+        <th>status</th>
+        <!-- <th>action</th> -->
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="
+          let parcel of receivedParcels
+            
+            | paginate: { itemsPerPage: 4, currentPage: p }
+        "
+      >
+      <td>{{ parcel.senderemail }}</td>
+      <td>{{ parcel.parcel_desc }}</td>
+      <td>{{ parcel.fromLoc }}</td>
+      <td>{{ parcel.status }}</td>
+      <!-- <td><button>view</button></td> -->
+      
+      
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

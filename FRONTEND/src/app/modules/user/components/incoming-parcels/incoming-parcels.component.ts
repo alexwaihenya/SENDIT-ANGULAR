@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ApiUserService } from 'src/app/modules/auth/services/api.user.service';
-import {
-  getParcels,
-  ParcelState,
-} from 'src/app/Redux/Reducers/OrdersReducers';
+import { getParcels, ParcelState } from 'src/app/Redux/Reducers/OrdersReducers';
 import * as Actions from '../../../../Redux/Actions/OrdersActions';
 
 @Component({
@@ -18,6 +15,9 @@ export class IncomingParcelsComponent implements OnInit {
   sentParcels: any;
   receivedParcels: any;
 
+  filter = '';
+  p: number = 1;
+
   parcels$ = this.store.select(getParcels);
 
   constructor(
@@ -27,32 +27,18 @@ export class IncomingParcelsComponent implements OnInit {
     private store: Store<ParcelState>
   ) {}
 
-
-
-  
-
   ngOnInit(): void {
     this.store.dispatch(Actions.LoadParcels());
-    this.parcels$.subscribe((res)=>{
+    this.parcels$.subscribe((res) => {
       console.log(this.parcels$);
-      
 
-      this.email = localStorage.getItem('email')!
+      this.email = localStorage.getItem('email')!;
 
-      this.receivedParcels = res.filter((data)=>{
-        return data.receiveremail == this.email
-
-      })
-
-    })
-
-
-
-
-
-  
-    
-
-    
+      this.receivedParcels = res.filter((data) => {
+        return data.receiveremail == this.email;
+      });
+    });
   }
+
+
 }

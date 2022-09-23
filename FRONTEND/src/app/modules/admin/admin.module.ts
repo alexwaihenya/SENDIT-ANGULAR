@@ -15,7 +15,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { OrderEffectsService } from 'src/app/Redux/Effects/OrdersEffects';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EditComponent } from './components/edit/edit.component';
-import { ViewComponent } from './components/view/view.component';
+import { ViewParcelComponent } from './components/view-parcel/view-parcel.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { GooglePlaceModule} from 'ngx-google-places-autocomplete'
 // import { SearchParcelPipe } from './pipes/search-parcel.pipe';
 
 
@@ -28,7 +30,7 @@ import { ViewComponent } from './components/view/view.component';
     NewParcelOrderComponent,
     ClientsComponent,
     EditComponent,
-    ViewComponent,
+    ViewParcelComponent,
     // SearchParcelPipe,
   
   
@@ -39,6 +41,8 @@ import { ViewComponent } from './components/view/view.component';
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
+    GoogleMapsModule,
+    GooglePlaceModule,
     StoreModule.forFeature('parcel',ParcelReducer),
     EffectsModule.forFeature([OrderEffectsService]),
    

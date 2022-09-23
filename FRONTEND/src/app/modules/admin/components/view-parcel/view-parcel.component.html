@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="card-parcel">
+
+    <div>
+        <div class="parcel-details" *ngFor="let parcel of parcels"> 
+
+            <p>PARCEL ID:{{parcel.parcel_id}}</p>
+            <p>SENDER EMAIL:{{parcel.senderemail}}</p>
+            <p>RECEIVER EMAIL:{{parcel.receiveremail}}</p>
+            <p>FROM:{{parcel.fromLoc}}</p>
+            <p>TO:{{parcel.toLoc}}</p>
+            <P>PARCEL DESC:{{parcel.parcel_desc}}</P>
+            <p>WEIGHT:{{parcel.weight}}</p>
+          </div>
+
+    </div> 
+
+    <div>
+      <form [formGroup]="form" (ngSubmit)="updateParcelStatus()" >
+
+        <div>
+          <label for="">Status</label>
+          <select formControlName="status">
+
+            <option selected>select to update status</option>
+            <option>sent</option>
+            <option>delivered</option>
+
+
+          </select>
+        </div>
+        <button  class="btn btn-danger">Update Status</button>
+
+      </form>
+    </div>
+ 
+  </div>
+
+  <div>
+    <div class="my-google-map">
+      <google-map
+        height="40vh"
+        width="40vw;"
+        [center]="center"
+        [zoom]="zoom"
+        (mapClick)="moveMap($event)"
+        (mapMousemove)="move($event)"
+      >
+        <map-marker
+          #marker="mapMarker"
+          *ngFor="let markerPosition of markerPositions"
+          [position]="markerPosition"
+        >
+        </map-marker>
+      </google-map>
+
+      <!-- <iframe width="560" height="315" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Rosemont+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" frameborder="0" allowfullscreen></iframe> -->
+    </div>
+  </div>
+</div>

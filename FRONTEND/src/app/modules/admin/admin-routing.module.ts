@@ -7,6 +7,7 @@ import { DeliveredOrdersComponent } from './components/delivered-orders/delivere
 import { DispatchedOrdersComponent } from './components/dispatched-orders/dispatched-orders.component';
 import { EditComponent } from './components/edit/edit.component';
 import { NewParcelOrderComponent } from './components/new-parcel-order/new-parcel-order.component';
+import { ViewParcelComponent } from './components/view-parcel/view-parcel.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
     {path:'dispatched-orders',component:DispatchedOrdersComponent},
     {path:'new-parcel-order',component:NewParcelOrderComponent},
     {path:'clients',component:ClientsComponent},
-    {path:'edit/:id',component:EditComponent}
+    {path:'edit/:id',component:EditComponent},
+    {path:'view-parcel/:id',component:ViewParcelComponent}
   
   ]},
  

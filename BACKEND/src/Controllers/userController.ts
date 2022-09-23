@@ -119,7 +119,7 @@ export const getAllUsers = async(req:userCustom,res:Response)=>{
     try {
 
 
-        const results = (await db.exec("getUsers")).recordset
+        const results = (await db.exec("getAllUsers")).recordset
         return res.status(201).json(results)
 
        

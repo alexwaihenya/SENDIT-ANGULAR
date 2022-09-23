@@ -18,16 +18,20 @@ const routes: Routes = [
       import('./modules/auth/auth.module').then((a) => a.AuthModule),
   },
   {
-    path: 'admin',
+    path: 'admin', canActivate: [AuthGuard],
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
-    canActivate: [AuthGuard],
+   
   },
   {
     path: 'user',
     loadChildren: () =>
       import('./modules/user/user.module').then((u) => u.UserModule),
-    canActivate: [AuthGuard],
+    
+  },
+  {
+    path:'',loadChildren:()=>import('./modules/shared/shared.module').then((s)=>s.SharedModule)
+
   },
   {
     path: '**',

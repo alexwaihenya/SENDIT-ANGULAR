@@ -13,3 +13,14 @@ BEGIN
 		RETURN;
 	END
 END
+
+
+CREATE PROCEDURE getAllUsers
+
+AS 
+BEGIN
+
+SELECT * FROM USERS
+WHERE role = 'user'
+
+END
